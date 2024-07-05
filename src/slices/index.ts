@@ -4,4 +4,5 @@ import dynamic from "next/dynamic";
 
 export const components = {
   rich_text: dynamic(() => import("./RichText")),
+  video_home_page: dynamic(() => import("./VideoHomePage")),
 };

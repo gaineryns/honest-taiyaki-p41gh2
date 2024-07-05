@@ -48,15 +48,6 @@
                 "label": "Label",
                 "placeholder": ""
               }
-            },
-            "cta_button": {
-              "type": "Boolean",
-              "config": {
-                "label": "CTA Button",
-                "default_value": false,
-                "placeholder_true": "true",
-                "placeholder_false": "false"
-              }
             }
           }
         }

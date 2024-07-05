@@ -4,7 +4,118 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+/**
+ * Content for contact_menu documents
+ */
+interface ContactMenuDocumentData {
+  /**
+   * location field in *contact_menu*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_menu.location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * phone field in *contact_menu*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_menu.phone
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone: prismic.KeyTextField;
+
+  /**
+   * hour field in *contact_menu*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_menu.hour
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  hour: prismic.KeyTextField;
+}
+
+/**
+ * contact_menu document from Prismic
+ *
+ * - **API ID**: `contact_menu`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactMenuDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactMenuDocumentData>,
+    "contact_menu",
+    Lang
+  >;
+
+/**
+ * Item in *menu_talent → talent*
+ */
+export interface MenuTalentDocumentDataLabelItem {
+  /**
+   * label field in *menu_talent → talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu_talent.label[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * link field in *menu_talent → talent*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu_talent.label[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for menu_talent documents
+ */
+interface MenuTalentDocumentData {
+  /**
+   * talent field in *menu_talent*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu_talent.label[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  label: prismic.GroupField<Simplify<MenuTalentDocumentDataLabelItem>>;
+}
+
+/**
+ * menu_talent document from Prismic
+ *
+ * - **API ID**: `menu_talent`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MenuTalentDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<MenuTalentDocumentData>,
+    "menu_talent",
+    Lang
+  >;
+
+type PageDocumentDataSlicesSlice = VideoHomePageSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -99,17 +210,6 @@ export interface SettingsDocumentDataNavigationItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
-
-  /**
-   * CTA Button field in *Settings → Navigation*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: settings.navigation[].cta_button
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  cta_button: prismic.BooleanField;
 }
 
 /**
@@ -177,7 +277,11 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | ContactMenuDocument
+  | MenuTalentDocument
+  | PageDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -224,6 +328,61 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Primary content in *VideoHomePage → Default → Primary*
+ */
+export interface VideoHomePageSliceDefaultPrimary {
+  /**
+   * CTA_link field in *VideoHomePage → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_home_page.default.primary.cta_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta_link: prismic.LinkField;
+
+  /**
+   * video field in *VideoHomePage → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_home_page.default.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
+}
+
+/**
+ * Default variation for VideoHomePage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoHomePageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoHomePageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoHomePage*
+ */
+type VideoHomePageSliceVariation = VideoHomePageSliceDefault;
+
+/**
+ * VideoHomePage Shared Slice
+ *
+ * - **API ID**: `video_home_page`
+ * - **Description**: VideoHomePage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoHomePageSlice = prismic.SharedSlice<
+  "video_home_page",
+  VideoHomePageSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -234,6 +393,11 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ContactMenuDocument,
+      ContactMenuDocumentData,
+      MenuTalentDocument,
+      MenuTalentDocumentData,
+      MenuTalentDocumentDataLabelItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -245,6 +409,10 @@ declare module "@prismicio/client" {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      VideoHomePageSlice,
+      VideoHomePageSliceDefaultPrimary,
+      VideoHomePageSliceVariation,
+      VideoHomePageSliceDefault,
     };
   }
 }
