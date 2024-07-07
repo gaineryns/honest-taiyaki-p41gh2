@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Content } from "@prismicio/client";
-import Link from "next/link";
 import Image from "next/image";
+import TalentModal from "./TalentModal";
 
 type TalentsProps = {
   talents: Content.TalentDocument[];
@@ -13,6 +13,9 @@ type TalentsProps = {
 export default function ArtistGrid({ talents }: TalentsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [categories, setCategories] = useState<string[]>(["all"]);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedTalent, setSelectedTalent] =
+    useState<Content.TalentDocument | null>(null);
 
   useEffect(() => {
     const allCategories = new Set<string>(["all"]);
@@ -36,6 +39,11 @@ export default function ArtistGrid({ talents }: TalentsProps) {
               slice.primary.genre.toLowerCase() === selectedCategory,
           ),
         );
+
+  const handleImageClick = (talent: Content.TalentDocument) => {
+    setSelectedTalent(talent);
+    setShowModal(true);
+  };
 
   return (
     <div className="container mx-auto px-4">
@@ -61,34 +69,41 @@ export default function ArtistGrid({ talents }: TalentsProps) {
           talent.data.slices.map(
             (slice) =>
               slice.slice_type === "actor" && (
-                <Link key={talent.id} href={`/talents/${talent.uid}`}>
+                <motion.div
+                  key={talent.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  layout
+                  className="relative cursor-pointer"
+                  onClick={() => handleImageClick(talent)}
+                >
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    layout
-                    className="relative cursor-pointer"
+                    className="flex h-[270px] w-full items-center justify-center overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
                   >
-                    <motion.div
-                      className="flex h-[270px] w-full items-center justify-center overflow-hidden"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <Image
-                        src={slice.primary.gallery_image.url}
-                        alt={slice.primary.name}
-                        width={270}
-                        height={270}
-                        className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-                        layout="fixed"
-                      />
-                    </motion.div>
-                    <p className="mt-2 text-center">{slice.primary.name}</p>
+                    <Image
+                      src={slice.primary.gallery_image.url}
+                      alt={slice.primary.name}
+                      width={270}
+                      height={270}
+                      className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                      layout="fixed"
+                    />
                   </motion.div>
-                </Link>
+                  <p className="mt-2 text-center">{slice.primary.name}</p>
+                </motion.div>
               ),
           ),
         )}
       </div>
+      {selectedTalent && (
+        <TalentModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          talent={selectedTalent}
+        />
+      )}
     </div>
   );
 }

@@ -640,6 +640,16 @@ export interface DiapoSliceDefaultPrimaryImagesItem {
  */
 export interface DiapoSliceDefaultPrimary {
   /**
+   * title field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: diapo.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
    * images field in *Carousel → Default → Primary*
    *
    * - **Field Type**: Group

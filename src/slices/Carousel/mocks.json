@@ -26,6 +26,17 @@
 						]
 					}
 				]
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat exercitation sint dolore tempor eu ex non qui laboris. Veniam aliqua consectetur ad ex commodo eu. Nostrud aute tempor qui."
+						}
+					}
+				]
 			}
 		},
 		"items": []
