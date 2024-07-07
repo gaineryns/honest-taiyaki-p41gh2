@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   about: dynamic(() => import("./About")),
   actor: dynamic(() => import("./Talent")),
-  filterlist: dynamic(() => import("./Filterlist")),
+  diapo: dynamic(() => import("./Carousel")),
   navigation_item: dynamic(() => import("./NavigationItem")),
   video_home_page: dynamic(() => import("./VideoHomePage")),
 };

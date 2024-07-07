@@ -1,8 +1,8 @@
 {
-  "id": "filterlist",
+  "id": "diapo",
   "type": "SharedSlice",
-  "name": "Filterlist",
-  "description": "Filterlist",
+  "name": "Carousel",
+  "description": "Diapo",
   "variations": [
     {
       "id": "default",
@@ -12,17 +12,18 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "filter_items": {
+        "images": {
           "type": "Group",
           "config": {
-            "label": "filter items",
+            "label": "images",
             "repeat": true,
             "fields": {
-              "item": {
-                "type": "Text",
+              "media": {
+                "type": "Link",
                 "config": {
-                  "label": "item",
-                  "placeholder": ""
+                  "label": "media",
+                  "placeholder": "",
+                  "select": "media"
                 }
               }
             }

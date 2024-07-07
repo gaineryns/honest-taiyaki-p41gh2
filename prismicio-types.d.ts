@@ -125,7 +125,7 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = AboutSlice | VideoHomePageSlice;
+type PageDocumentDataSlicesSlice = DiapoSlice | AboutSlice | VideoHomePageSlice;
 
 /**
  * Content for Page documents
@@ -621,66 +621,61 @@ type ActorSliceVariation = ActorSliceDefault;
 export type ActorSlice = prismic.SharedSlice<"actor", ActorSliceVariation>;
 
 /**
- * Item in *Filterlist → Default → Primary → filter items*
+ * Item in *Carousel → Default → Primary → images*
  */
-export interface FilterlistSliceDefaultPrimaryFilterItemsItem {
+export interface DiapoSliceDefaultPrimaryImagesItem {
   /**
-   * item field in *Filterlist → Default → Primary → filter items*
+   * media field in *Carousel → Default → Primary → images*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Link to Media
    * - **Placeholder**: *None*
-   * - **API ID Path**: filterlist.default.primary.filter_items[].item
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: diapo.default.primary.images[].media
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  item: prismic.KeyTextField;
+  media: prismic.LinkToMediaField;
 }
 
 /**
- * Primary content in *Filterlist → Default → Primary*
+ * Primary content in *Carousel → Default → Primary*
  */
-export interface FilterlistSliceDefaultPrimary {
+export interface DiapoSliceDefaultPrimary {
   /**
-   * filter items field in *Filterlist → Default → Primary*
+   * images field in *Carousel → Default → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: filterlist.default.primary.filter_items[]
+   * - **API ID Path**: diapo.default.primary.images[]
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  filter_items: prismic.GroupField<
-    Simplify<FilterlistSliceDefaultPrimaryFilterItemsItem>
-  >;
+  images: prismic.GroupField<Simplify<DiapoSliceDefaultPrimaryImagesItem>>;
 }
 
 /**
- * Default variation for Filterlist Slice
+ * Default variation for Carousel Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type FilterlistSliceDefault = prismic.SharedSliceVariation<
+export type DiapoSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<FilterlistSliceDefaultPrimary>,
+  Simplify<DiapoSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *Filterlist*
+ * Slice variation for *Carousel*
  */
-type FilterlistSliceVariation = FilterlistSliceDefault;
+type DiapoSliceVariation = DiapoSliceDefault;
 
 /**
- * Filterlist Shared Slice
+ * Carousel Shared Slice
  *
- * - **API ID**: `filterlist`
- * - **Description**: Filterlist
+ * - **API ID**: `diapo`
+ * - **Description**: Diapo
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type FilterlistSlice = prismic.SharedSlice<
-  "filterlist",
-  FilterlistSliceVariation
->;
+export type DiapoSlice = prismic.SharedSlice<"diapo", DiapoSliceVariation>;
 
 /**
  * Primary content in *NavigationItem → Default → Primary*
@@ -850,11 +845,11 @@ declare module "@prismicio/client" {
       ActorSliceDefaultPrimary,
       ActorSliceVariation,
       ActorSliceDefault,
-      FilterlistSlice,
-      FilterlistSliceDefaultPrimaryFilterItemsItem,
-      FilterlistSliceDefaultPrimary,
-      FilterlistSliceVariation,
-      FilterlistSliceDefault,
+      DiapoSlice,
+      DiapoSliceDefaultPrimaryImagesItem,
+      DiapoSliceDefaultPrimary,
+      DiapoSliceVariation,
+      DiapoSliceDefault,
       NavigationItemSlice,
       NavigationItemSliceDefaultPrimary,
       NavigationItemSliceDefaultItem,

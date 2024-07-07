@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "diapo": {
+              "type": "SharedSlice"
+            },
             "about": {
               "type": "SharedSlice"
             },
