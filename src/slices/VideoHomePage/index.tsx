@@ -22,7 +22,13 @@ const VideoHomePage = ({ slice }: VideoHomePageProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <div className="video-wrapper">
-        <video src={videoUrl} loop className="full-width-video" />
+        <video
+          src={videoUrl}
+          loop
+          autoPlay
+          muted
+          className="full-width-video"
+        />
         <div className="centered-button">
           <PrismicNextLink field={slice.primary.cta_link}>
             View Talents

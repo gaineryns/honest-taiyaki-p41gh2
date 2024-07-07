@@ -3,7 +3,9 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  about: dynamic(() => import("./About")),
+  actor: dynamic(() => import("./Talent")),
+  filterlist: dynamic(() => import("./Filterlist")),
   navigation_item: dynamic(() => import("./NavigationItem")),
-  rich_text: dynamic(() => import("./RichText")),
   video_home_page: dynamic(() => import("./VideoHomePage")),
 };

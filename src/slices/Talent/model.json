@@ -1,0 +1,134 @@
+{
+  "id": "actor",
+  "type": "SharedSlice",
+  "name": "Talent",
+  "description": "Actor",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "gallery_image": {
+          "type": "Image",
+          "config": {
+            "label": "gallery image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "name",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "vimeo_link": {
+          "type": "Link",
+          "config": {
+            "label": "vimeo link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "comp_card": {
+          "type": "Link",
+          "config": {
+            "label": "Comp card",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "cv_file": {
+          "type": "Link",
+          "config": {
+            "label": "CV file",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "height_by_feet_and_inches": {
+          "type": "Text",
+          "config": {
+            "label": "Height by feet and inches",
+            "placeholder": ""
+          }
+        },
+        "eye_color": {
+          "type": "Text",
+          "config": {
+            "label": "eye color",
+            "placeholder": ""
+          }
+        },
+        "hair": {
+          "type": "Text",
+          "config": {
+            "label": "hair",
+            "placeholder": ""
+          }
+        },
+        "genre": {
+          "type": "Select",
+          "config": {
+            "label": "genre",
+            "placeholder": "genre",
+            "options": ["Male", "Female", "No binary"]
+          }
+        },
+        "enable": {
+          "type": "Boolean",
+          "config": {
+            "label": "enable",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "relation": {
+          "type": "Link",
+          "config": {
+            "label": "relation",
+            "select": "document"
+          }
+        },
+        "playing_age_min": {
+          "type": "Number",
+          "config": {
+            "label": "playing age min",
+            "placeholder": ""
+          }
+        },
+        "playing_age_max": {
+          "type": "Number",
+          "config": {
+            "label": "playing age max",
+            "placeholder": ""
+          }
+        },
+        "category": {
+          "type": "Select",
+          "config": {
+            "label": "category",
+            "placeholder": "",
+            "options": ["Dancers", "Actors"]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

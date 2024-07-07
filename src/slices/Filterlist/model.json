@@ -1,0 +1,35 @@
+{
+  "id": "filterlist",
+  "type": "SharedSlice",
+  "name": "Filterlist",
+  "description": "Filterlist",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "filter_items": {
+          "type": "Group",
+          "config": {
+            "label": "filter items",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Text",
+                "config": {
+                  "label": "item",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

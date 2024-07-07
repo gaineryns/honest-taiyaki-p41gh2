@@ -58,63 +58,6 @@ export type ContactMenuDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *menu_talent → talent*
- */
-export interface MenuTalentDocumentDataLabelItem {
-  /**
-   * label field in *menu_talent → talent*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: menu_talent.label[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-
-  /**
-   * link field in *menu_talent → talent*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: menu_talent.label[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-}
-
-/**
- * Content for menu_talent documents
- */
-interface MenuTalentDocumentData {
-  /**
-   * talent field in *menu_talent*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: menu_talent.label[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  label: prismic.GroupField<Simplify<MenuTalentDocumentDataLabelItem>>;
-}
-
-/**
- * menu_talent document from Prismic
- *
- * - **API ID**: `menu_talent`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type MenuTalentDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<MenuTalentDocumentData>,
-    "menu_talent",
-    Lang
-  >;
-
 type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
 
 /**
@@ -182,7 +125,7 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = VideoHomePageSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice = AboutSlice | VideoHomePageSlice;
 
 /**
  * Content for Page documents
@@ -344,12 +287,400 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+type TalentDocumentDataSlicesSlice = ActorSlice;
+
+/**
+ * Content for Talent documents
+ */
+interface TalentDocumentData {
+  /**
+   * Slice Zone field in *Talent*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TalentDocumentDataSlicesSlice> /**
+   * Meta Title field in *Talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: talent.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: talent.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Talent*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Talent document from Prismic
+ *
+ * - **API ID**: `talent`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TalentDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<TalentDocumentData>, "talent", Lang>;
+
 export type AllDocumentTypes =
   | ContactMenuDocument
-  | MenuTalentDocument
   | NavigationDocument
   | PageDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | TalentDocument;
+
+/**
+ * Primary content in *About → Default → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+  /**
+   * title field in *About → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *About → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * image field in *About → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * person field in *About → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.person
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  person: prismic.RichTextField;
+
+  /**
+   * person title field in *About → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.person_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  person_title: prismic.RichTextField;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
+
+/**
+ * Primary content in *Talent → Default → Primary*
+ */
+export interface ActorSliceDefaultPrimary {
+  /**
+   * gallery image field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.gallery_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  gallery_image: prismic.ImageField<never>;
+
+  /**
+   * name field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * description field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * vimeo link field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.vimeo_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  vimeo_link: prismic.LinkField;
+
+  /**
+   * Comp card field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.comp_card
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  comp_card: prismic.LinkToMediaField;
+
+  /**
+   * CV file field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.cv_file
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cv_file: prismic.LinkToMediaField;
+
+  /**
+   * Height by feet and inches field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.height_by_feet_and_inches
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  height_by_feet_and_inches: prismic.KeyTextField;
+
+  /**
+   * eye color field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.eye_color
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  eye_color: prismic.KeyTextField;
+
+  /**
+   * hair field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.hair
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  hair: prismic.KeyTextField;
+
+  /**
+   * genre field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: genre
+   * - **API ID Path**: actor.default.primary.genre
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  genre: prismic.SelectField<"Male" | "Female" | "No binary">;
+
+  /**
+   * enable field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: actor.default.primary.enable
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  enable: prismic.BooleanField;
+
+  /**
+   * relation field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.relation
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  relation: prismic.ContentRelationshipField;
+
+  /**
+   * playing age min field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.playing_age_min
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  playing_age_min: prismic.NumberField;
+
+  /**
+   * playing age max field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.playing_age_max
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  playing_age_max: prismic.NumberField;
+
+  /**
+   * category field in *Talent → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actor.default.primary.category
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"Dancers" | "Actors">;
+}
+
+/**
+ * Default variation for Talent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActorSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ActorSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Talent*
+ */
+type ActorSliceVariation = ActorSliceDefault;
+
+/**
+ * Talent Shared Slice
+ *
+ * - **API ID**: `actor`
+ * - **Description**: Actor
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActorSlice = prismic.SharedSlice<"actor", ActorSliceVariation>;
+
+/**
+ * Item in *Filterlist → Default → Primary → filter items*
+ */
+export interface FilterlistSliceDefaultPrimaryFilterItemsItem {
+  /**
+   * item field in *Filterlist → Default → Primary → filter items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: filterlist.default.primary.filter_items[].item
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  item: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Filterlist → Default → Primary*
+ */
+export interface FilterlistSliceDefaultPrimary {
+  /**
+   * filter items field in *Filterlist → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: filterlist.default.primary.filter_items[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  filter_items: prismic.GroupField<
+    Simplify<FilterlistSliceDefaultPrimaryFilterItemsItem>
+  >;
+}
+
+/**
+ * Default variation for Filterlist Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FilterlistSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FilterlistSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Filterlist*
+ */
+type FilterlistSliceVariation = FilterlistSliceDefault;
+
+/**
+ * Filterlist Shared Slice
+ *
+ * - **API ID**: `filterlist`
+ * - **Description**: Filterlist
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FilterlistSlice = prismic.SharedSlice<
+  "filterlist",
+  FilterlistSliceVariation
+>;
 
 /**
  * Primary content in *NavigationItem → Default → Primary*
@@ -432,51 +763,6 @@ export type NavigationItemSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *RichText → Default → Primary*
- */
-export interface RichTextSliceDefaultPrimary {
-  /**
-   * Content field in *RichText → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.default.primary.content
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  content: prismic.RichTextField;
-}
-
-/**
- * Default variation for RichText Slice
- *
- * - **API ID**: `default`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<RichTextSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *RichText*
- */
-type RichTextSliceVariation = RichTextSliceDefault;
-
-/**
- * RichText Shared Slice
- *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
->;
-
-/**
  * Primary content in *VideoHomePage → Default → Primary*
  */
 export interface VideoHomePageSliceDefaultPrimary {
@@ -543,9 +829,6 @@ declare module "@prismicio/client" {
     export type {
       ContactMenuDocument,
       ContactMenuDocumentData,
-      MenuTalentDocument,
-      MenuTalentDocumentData,
-      MenuTalentDocumentDataLabelItem,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataSlicesSlice,
@@ -555,16 +838,28 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      TalentDocument,
+      TalentDocumentData,
+      TalentDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AboutSlice,
+      AboutSliceDefaultPrimary,
+      AboutSliceVariation,
+      AboutSliceDefault,
+      ActorSlice,
+      ActorSliceDefaultPrimary,
+      ActorSliceVariation,
+      ActorSliceDefault,
+      FilterlistSlice,
+      FilterlistSliceDefaultPrimaryFilterItemsItem,
+      FilterlistSliceDefaultPrimary,
+      FilterlistSliceVariation,
+      FilterlistSliceDefault,
       NavigationItemSlice,
       NavigationItemSliceDefaultPrimary,
       NavigationItemSliceDefaultItem,
       NavigationItemSliceVariation,
       NavigationItemSliceDefault,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
       VideoHomePageSlice,
       VideoHomePageSliceDefaultPrimary,
       VideoHomePageSliceVariation,
