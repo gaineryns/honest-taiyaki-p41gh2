@@ -14,8 +14,7 @@ export default function ArtistGrid({ talents }: TalentsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [categories, setCategories] = useState<string[]>(["all"]);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [selectedTalent, setSelectedTalent] =
-    useState<Content.TalentDocument | null>(null);
+  const [, setSelectedTalent] = useState<Content.TalentDocument | null>(null);
 
   useEffect(() => {
     const allCategories = new Set<string>(["all"]);
