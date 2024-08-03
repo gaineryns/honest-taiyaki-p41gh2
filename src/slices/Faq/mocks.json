@@ -1,0 +1,62 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"faq": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"question",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "amount",
+									"type": "Text"
+								}
+							],
+							[
+								"answer",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Adipisicing ullamco consectetur tempor irure enim cupidatat qui laboris magna cillum labore laboris laborum cillum. Nostrud occaecat aute mollit sit cillum adipisicing duis."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "enemy",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laboris mollit aute veniam occaecat aliqua proident officia culpa. Nulla pariatur cillum aliquip dolore adipisicing ea ullamco qui in irure do eiusmod est ea."
+						}
+					}
+				]
+			},
+			"coaching": {
+				"__TYPE__": "FieldContent",
+				"value": "sunlight",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

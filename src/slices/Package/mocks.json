@@ -1,0 +1,81 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"package": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"category",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "note",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "smell",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Esse Lorem eu voluptate ullamco laborum ipsum ex laboris. Eu esse est tempor commodo ea eu velit ad dolore voluptate dolor velit veniam velit. Cillum duis ipsum adipisicing labore magna nulla enim anim sit esse."
+											}
+										}
+									]
+								}
+							],
+							[
+								"delivery",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "almost",
+									"type": "Text"
+								}
+							],
+							[
+								"revision",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "yellow",
+									"type": "Text"
+								}
+							],
+							[
+								"duration",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "within",
+									"type": "Text"
+								}
+							],
+							[
+								"price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "2",
+									"type": "Number"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

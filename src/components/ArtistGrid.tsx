@@ -4,58 +4,55 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Content } from "@prismicio/client";
 import Image from "next/image";
-import TalentModal from "./TalentModal";
+import Link from "next/link";
 
 type TalentsProps = {
   talents: Content.TalentDocument[];
 };
 
 export default function ArtistGrid({ talents }: TalentsProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [categories, setCategories] = useState<string[]>(["all"]);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [, setSelectedTalent] = useState<Content.TalentDocument | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    const allCategories = new Set<string>(["all"]);
+    const allCategories = new Set<string>();
     talents.forEach((talent) => {
-      talent.data.slices.forEach((slice) => {
-        if (slice.slice_type === "actor") {
-          allCategories.add(slice.primary.genre.toLowerCase());
-        }
-      });
+      const genre = talent.data.genre?.toLowerCase();
+      if (genre && !allCategories.has(genre)) {
+        allCategories.add(genre);
+      }
     });
     setCategories(Array.from(allCategories));
   }, [talents]);
 
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prevCategories) =>
+      prevCategories.includes(category)
+        ? prevCategories.filter((cat) => cat !== category)
+        : [...prevCategories, category],
+    );
+  };
+
   const filteredTalents =
-    selectedCategory === "all"
+    selectedCategories.length === 0 ||
+    selectedCategories.length === categories.length
       ? talents
       : talents.filter((talent) =>
-          talent.data.slices.some(
-            (slice) =>
-              slice.slice_type === "actor" &&
-              slice.primary.genre.toLowerCase() === selectedCategory,
-          ),
+          selectedCategories.includes(talent.data.genre.toLowerCase()),
         );
-
-  const handleImageClick = (talent: Content.TalentDocument) => {
-    setSelectedTalent(talent);
-    setShowModal(true);
-  };
 
   return (
     <div className="container mx-auto px-4">
       <div className="sticky top-0 z-10 bg-white py-4">
-        <div className="flex justify-center">
+        <div className="flex justify-start space-x-4">
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`mx-2 rounded px-4 py-2 ${
-                selectedCategory === category
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300"
+              onClick={() => toggleCategory(category)}
+              className={`rounded-full border px-4 py-2 text-sm uppercase ${
+                selectedCategories.includes(category)
+                  ? "border-[#e8be69] bg-[#e8be69] text-white"
+                  : "border-[#e8be69] bg-transparent text-black"
               }`}
             >
               {category}
@@ -64,45 +61,38 @@ export default function ArtistGrid({ talents }: TalentsProps) {
         </div>
       </div>
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {filteredTalents.map((talent) =>
-          talent.data.slices.map(
-            (slice) =>
-              slice.slice_type === "actor" && (
+        {filteredTalents.map((talent) => (
+          <motion.div
+            key={talent.id}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1 }}
+            layout
+            className="relative cursor-pointer"
+          >
+            <Link href={`/talents/${talent.uid}`}>
+              <div className="relative h-[280px] w-full overflow-hidden">
                 <motion.div
-                  key={talent.id}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  layout
-                  className="relative cursor-pointer"
-                  onClick={() => handleImageClick(talent)}
+                  className="h-full w-full"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  <motion.div
-                    className="flex h-[270px] w-full items-center justify-center overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Image
-                      src={slice.primary.gallery_image.url}
-                      alt={slice.primary.name}
-                      width={270}
-                      height={270}
-                      className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-                      layout="fixed"
-                    />
-                  </motion.div>
-                  <p className="mt-2 text-center">{slice.primary.name}</p>
+                  <Image
+                    src={talent.data.head_shot.url}
+                    alt={talent.data.name}
+                    layout="fill"
+                    objectFit="cover"
+                    className="grayscale transition-all duration-500 hover:grayscale-0"
+                  />
                 </motion.div>
-              ),
-          ),
-        )}
+              </div>
+              <button className="font-montserrat mx-auto mt-2 block w-[70%] rounded-full border border-[#e8be69] bg-transparent px-2 py-1 text-center uppercase text-black">
+                {talent.data.name}
+              </button>
+            </Link>
+          </motion.div>
+        ))}
       </div>
-      {selectedTalent && (
-        <TalentModal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          talent={selectedTalent}
-        />
-      )}
     </div>
   );
 }

@@ -4,16 +4,21 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import TalentDetails from "@/components/TalentDetails";
 
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
-  const page = await client
+  const talent = await client
     .getByUID("talent", params.uid)
     .catch(() => notFound());
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <div className="mx-auto max-w-6xl rounded-lg bg-white text-black shadow-lg">
+      <TalentDetails talent={talent.data} />;
+    </div>
+  );
 }
 
 export async function generateMetadata({
@@ -22,21 +27,21 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const client = createClient();
-  const page = await client
+  const talent = await client
     .getByUID("talent", params.uid)
     .catch(() => notFound());
 
   return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
+    title: talent.data.meta_title,
+    description: talent.data.meta_description,
   };
 }
 
 export async function generateStaticParams() {
   const client = createClient();
-  const pages = await client.getAllByType("talent");
+  const talent = await client.getAllByType("talent");
 
-  return pages.map((page) => {
-    return { uid: page.uid };
+  return talent.map((talent) => {
+    return { uid: talent.uid };
   });
 }

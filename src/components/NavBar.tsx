@@ -4,18 +4,50 @@ import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicText } from "@prismicio/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type NavbarProps = {
   globalNav: Content.NavigationDocument;
 };
 
 export default function NavBar({ globalNav }: NavbarProps) {
-  // Hover state to manage which menu is currently hovered
   const [hoverMenu, setHoverMenu] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  const handleMouseEnter = (id: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setHoverMenu(id);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setHoverMenu(null);
+    }, 200); // Adjust delay as needed
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setHoverMenu(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <nav className="bg-white px-4 py-4 md:px-6 md:py-6" aria-label="Main">
+    <nav
+      className="navbar container bg-[#EFEFEF] p-0"
+      aria-label="Main"
+      ref={menuRef}
+    >
       <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-black md:flex-row md:items-center">
         <div>
           <Link href="/">
@@ -29,31 +61,42 @@ export default function NavBar({ globalNav }: NavbarProps) {
         </div>
         <div>
           <ul className="flex gap-6">
-            {/* Renders top-level links. */}
             {globalNav.data.slices.map((slice) => (
               <li
                 key={slice.id}
-                className="relative"
-                onMouseEnter={() => setHoverMenu(slice.id)}
-                onMouseLeave={() => setHoverMenu(null)}
+                className="menu-item relative"
+                onMouseEnter={() => handleMouseEnter(slice.id)}
+                onMouseLeave={handleMouseLeave}
               >
                 {slice.items.length > 0 ? (
                   <>
                     <button className="focus:outline-none">
                       <PrismicText field={slice.primary.name} />
                     </button>
-                    {/* Render sub-menu if items exist and this slice is being hovered */}
-                    {hoverMenu === slice.id && (
-                      <ul className="absolute left-0 mt-2 bg-white shadow-lg">
-                        {slice.items.map((item, index) => (
-                          <li key={index} className="p-2">
-                            <PrismicNextLink field={item.child_link}>
-                              <PrismicText field={item.child_name} />
-                            </PrismicNextLink>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    <AnimatePresence>
+                      {hoverMenu === slice.id && (
+                        <motion.ul
+                          className="submenu absolute z-50 mt-2 w-48 bg-white shadow-lg"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3 }}
+                          onMouseEnter={() => handleMouseEnter(slice.id)}
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          {slice.items.map((item, index) => (
+                            <li
+                              key={index}
+                              className="submenu-item p-2 hover:bg-gray-100"
+                            >
+                              <PrismicNextLink field={item.child_link}>
+                                <PrismicText field={item.child_name} />
+                              </PrismicNextLink>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
                   </>
                 ) : (
                   <PrismicNextLink field={slice.primary.link}>

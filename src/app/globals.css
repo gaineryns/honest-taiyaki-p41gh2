@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../styles/navbar.css";
 /* globals.css */
 
 :root {
@@ -184,4 +185,48 @@ body {
 
 .cta-button-alt {
   @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-[#e8be69] bg-white px-6 py-2 text-sm font-normal text-black shadow-none outline-none transition-colors duration-200 hover:bg-[#e8be69] hover:text-white;
+}
+
+.fixed-width-button {
+  width: 150px; /* Adjust this width as needed */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Tailwind CSS classes for z-index and positioning are already included in the component. 
+   If you prefer to use plain CSS, you can add the following styles: */
+
+.menu-item {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  z-index: 50;
+  margin-top: 0.5rem; /* Adjust as needed */
+  width: 12rem; /* Adjust as needed */
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu-item {
+  padding: 0.5rem;
+}
+
+.submenu-item:hover {
+  background-color: #f3f4f6; /* Tailwind gray-100 */
 }

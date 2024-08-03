@@ -12,15 +12,134 @@
         },
         "type": "UID"
       },
+      "head_shot": {
+        "type": "Image",
+        "config": {
+          "label": "head shot",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "name",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "vimeo_link": {
+        "type": "Embed",
+        "config": {
+          "label": "vimeo link",
+          "placeholder": ""
+        }
+      },
+      "comp_card": {
+        "type": "Link",
+        "config": {
+          "label": "Comp card",
+          "placeholder": "",
+          "select": "media"
+        }
+      },
+      "cv_file": {
+        "type": "Link",
+        "config": {
+          "label": "CV file",
+          "placeholder": "",
+          "select": "media"
+        }
+      },
+      "height": {
+        "type": "Text",
+        "config": {
+          "label": "height",
+          "placeholder": ""
+        }
+      },
+      "color_eye": {
+        "type": "Text",
+        "config": {
+          "label": "color eye",
+          "placeholder": ""
+        }
+      },
+      "color_hair": {
+        "type": "Text",
+        "config": {
+          "label": "color hair",
+          "placeholder": ""
+        }
+      },
+      "genre": {
+        "type": "Select",
+        "config": {
+          "label": "genre",
+          "placeholder": "",
+          "options": ["Male", "Female", "Non Binary"]
+        }
+      },
+      "enable": {
+        "type": "Boolean",
+        "config": {
+          "label": "enable",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "playing_age_min": {
+        "type": "Number",
+        "config": {
+          "label": "playing age min",
+          "placeholder": ""
+        }
+      },
+      "playing_age_max": {
+        "type": "Number",
+        "config": {
+          "label": "playing age max",
+          "placeholder": ""
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "category",
+          "placeholder": "",
+          "options": ["Actor", "Dancer"]
+        }
+      },
+      "spotlight_link": {
+        "type": "Link",
+        "config": {
+          "label": "spotlight link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "imdb_link": {
+        "type": "Link",
+        "config": {
+          "label": "IMDB link",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "actor": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     },

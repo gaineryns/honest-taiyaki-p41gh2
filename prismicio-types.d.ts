@@ -4,6 +4,202 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type CoachingDocumentDataSlicesSlice = PackageSlice;
+
+/**
+ * Content for Coaching documents
+ */
+interface CoachingDocumentData {
+  /**
+   * Slice Zone field in *Coaching*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CoachingDocumentDataSlicesSlice> /**
+   * Meta Title field in *Coaching*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: coaching.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Coaching*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: coaching.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Coaching*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Coaching document from Prismic
+ *
+ * - **API ID**: `coaching`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CoachingDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<CoachingDocumentData>,
+    "coaching",
+    Lang
+  >;
+
+/**
+ * Content for contact_info documents
+ */
+interface ContactInfoDocumentData {
+  /**
+   * title field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * credo field in *contact_info*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.credo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  credo: prismic.RichTextField;
+
+  /**
+   * location field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * phone field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.phone
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone: prismic.KeyTextField;
+
+  /**
+   * email field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * open hour and day field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.open_hour_and_day
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  open_hour_and_day: prismic.KeyTextField;
+
+  /**
+   * twitter field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.twitter
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  twitter: prismic.KeyTextField;
+
+  /**
+   * spotlight field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.spotlight
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  spotlight: prismic.KeyTextField;
+
+  /**
+   * instagram field in *contact_info*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  instagram: prismic.KeyTextField;
+
+  /**
+   * image field in *contact_info*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * contact_info document from Prismic
+ *
+ * - **API ID**: `contact_info`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactInfoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ContactInfoDocumentData>,
+    "contact_info",
+    Lang
+  >;
+
 /**
  * Content for contact_menu documents
  */
@@ -55,6 +251,143 @@ export type ContactMenuDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<ContactMenuDocumentData>,
     "contact_menu",
+    Lang
+  >;
+
+type FaqDocumentDataSlicesSlice = FaqSlice;
+
+/**
+ * Content for faq documents
+ */
+interface FaqDocumentData {
+  /**
+   * title field in *faq*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *faq*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FaqDocumentDataSlicesSlice> /**
+   * Meta Title field in *faq*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: faq.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *faq*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: faq.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *faq*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * faq document from Prismic
+ *
+ * - **API ID**: `faq`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FaqDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<FaqDocumentData>, "faq", Lang>;
+
+type HomepageDocumentDataSlicesSlice = HomepageSlice;
+
+/**
+ * Content for homepage documents
+ */
+interface HomepageDocumentData {
+  /**
+   * Slice Zone field in *homepage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice> /**
+   * Meta Title field in *homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: homepage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: homepage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *homepage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * homepage document from Prismic
+ *
+ * - **API ID**: `homepage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomepageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HomepageDocumentData>,
+    "homepage",
     Lang
   >;
 
@@ -125,7 +458,161 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = DiapoSlice | AboutSlice | VideoHomePageSlice;
+type NewsDocumentDataSlicesSlice = RepresentationSlice;
+
+/**
+ * Content for News documents
+ */
+interface NewsDocumentData {
+  /**
+   * title field in *News*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *News*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NewsDocumentDataSlicesSlice> /**
+   * Meta Title field in *News*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: news.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *News*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: news.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *News*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: news.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * News document from Prismic
+ *
+ * - **API ID**: `news`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<NewsDocumentData>, "news", Lang>;
+
+type PackageDocumentDataSlicesSlice = PackageSlice;
+
+/**
+ * Content for Package documents
+ */
+interface PackageDocumentData {
+  /**
+   * title field in *Package*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *Package*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * text package field in *Package*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.text_package
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text_package: prismic.KeyTextField;
+
+  /**
+   * book a call field in *Package*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.book_a_call
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  book_a_call: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Package*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PackageDocumentDataSlicesSlice>;
+}
+
+/**
+ * Package document from Prismic
+ *
+ * - **API ID**: `package`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PackageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PackageDocumentData>,
+    "package",
+    Lang
+  >;
+
+type PageDocumentDataSlicesSlice =
+  | FaqSlice
+  | DiapoSlice
+  | AboutSlice
+  | VideoHomePageSlice;
 
 /**
  * Content for Page documents
@@ -287,12 +774,189 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-type TalentDocumentDataSlicesSlice = ActorSlice;
+type TalentDocumentDataSlicesSlice = never;
 
 /**
  * Content for Talent documents
  */
 interface TalentDocumentData {
+  /**
+   * head shot field in *Talent*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.head_shot
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  head_shot: prismic.ImageField<never>;
+
+  /**
+   * name field in *Talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * description field in *Talent*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * vimeo link field in *Talent*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.vimeo_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  vimeo_link: prismic.EmbedField;
+
+  /**
+   * Comp card field in *Talent*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.comp_card
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  comp_card: prismic.LinkToMediaField;
+
+  /**
+   * CV file field in *Talent*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.cv_file
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cv_file: prismic.LinkToMediaField;
+
+  /**
+   * height field in *Talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.height
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  height: prismic.KeyTextField;
+
+  /**
+   * color eye field in *Talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.color_eye
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  color_eye: prismic.KeyTextField;
+
+  /**
+   * color hair field in *Talent*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.color_hair
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  color_hair: prismic.KeyTextField;
+
+  /**
+   * genre field in *Talent*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.genre
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  genre: prismic.SelectField<"Male" | "Female" | "Non Binary">;
+
+  /**
+   * enable field in *Talent*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: talent.enable
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  enable: prismic.BooleanField;
+
+  /**
+   * playing age min field in *Talent*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.playing_age_min
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  playing_age_min: prismic.NumberField;
+
+  /**
+   * playing age max field in *Talent*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.playing_age_max
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  playing_age_max: prismic.NumberField;
+
+  /**
+   * category field in *Talent*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"Actor" | "Dancer">;
+
+  /**
+   * spotlight link field in *Talent*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.spotlight_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  spotlight_link: prismic.LinkField;
+
+  /**
+   * IMDB link field in *Talent*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.imdb_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  imdb_link: prismic.LinkField;
+
   /**
    * Slice Zone field in *Talent*
    *
@@ -349,8 +1013,14 @@ export type TalentDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<TalentDocumentData>, "talent", Lang>;
 
 export type AllDocumentTypes =
+  | CoachingDocument
+  | ContactInfoDocument
   | ContactMenuDocument
+  | FaqDocument
+  | HomepageDocument
   | NavigationDocument
+  | NewsDocument
+  | PackageDocument
   | PageDocument
   | SettingsDocument
   | TalentDocument;
@@ -688,6 +1358,158 @@ type DiapoSliceVariation = DiapoSliceDefault;
 export type DiapoSlice = prismic.SharedSlice<"diapo", DiapoSliceVariation>;
 
 /**
+ * Item in *Faq → Default → Primary → faq*
+ */
+export interface FaqSliceDefaultPrimaryFaqItem {
+  /**
+   * question field in *Faq → Default → Primary → faq*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.faq[].question
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  question: prismic.KeyTextField;
+
+  /**
+   * answer field in *Faq → Default → Primary → faq*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.faq[].answer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Faq → Default → Primary*
+ */
+export interface FaqSliceDefaultPrimary {
+  /**
+   * title field in *Faq → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * faq field in *Faq → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.faq[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  faq: prismic.GroupField<Simplify<FaqSliceDefaultPrimaryFaqItem>>;
+
+  /**
+   * coaching_call field in *Faq → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.coaching
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  coaching: prismic.KeyTextField;
+
+  /**
+   * description field in *Faq → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Faq Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FaqSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Faq*
+ */
+type FaqSliceVariation = FaqSliceDefault;
+
+/**
+ * Faq Shared Slice
+ *
+ * - **API ID**: `faq`
+ * - **Description**: Faq
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqSlice = prismic.SharedSlice<"faq", FaqSliceVariation>;
+
+/**
+ * Primary content in *Homepage → Default → Primary*
+ */
+export interface HomepageSliceDefaultPrimary {
+  /**
+   * video field in *Homepage → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.default.primary.video
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  video: prismic.LinkToMediaField;
+
+  /**
+   * logo field in *Homepage → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.default.primary.logo
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  logo: prismic.LinkToMediaField;
+}
+
+/**
+ * Default variation for Homepage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomepageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomepageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Homepage*
+ */
+type HomepageSliceVariation = HomepageSliceDefault;
+
+/**
+ * Homepage Shared Slice
+ *
+ * - **API ID**: `homepage`
+ * - **Description**: Homepage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomepageSlice = prismic.SharedSlice<
+  "homepage",
+  HomepageSliceVariation
+>;
+
+/**
  * Primary content in *NavigationItem → Default → Primary*
  */
 export interface NavigationItemSliceDefaultPrimary {
@@ -768,6 +1590,228 @@ export type NavigationItemSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Package → Default → Primary → package*
+ */
+export interface PackageSliceDefaultPrimaryPackageItem {
+  /**
+   * category field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * title field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * delivery field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].delivery
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  delivery: prismic.KeyTextField;
+
+  /**
+   * revision field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].revision
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  revision: prismic.KeyTextField;
+
+  /**
+   * duration field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].duration
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  duration: prismic.KeyTextField;
+
+  /**
+   * price field in *Package → Default → Primary → package*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[].price
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  price: prismic.NumberField;
+}
+
+/**
+ * Primary content in *Package → Default → Primary*
+ */
+export interface PackageSliceDefaultPrimary {
+  /**
+   * package field in *Package → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package.default.primary.package[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  package: prismic.GroupField<Simplify<PackageSliceDefaultPrimaryPackageItem>>;
+}
+
+/**
+ * Default variation for Package Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PackageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PackageSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Package*
+ */
+type PackageSliceVariation = PackageSliceDefault;
+
+/**
+ * Package Shared Slice
+ *
+ * - **API ID**: `package`
+ * - **Description**: Package
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PackageSlice = prismic.SharedSlice<
+  "package",
+  PackageSliceVariation
+>;
+
+/**
+ * Item in *Representation → Default → Primary → representation*
+ */
+export interface RepresentationSliceDefaultPrimaryRepresentationItem {
+  /**
+   * image field in *Representation → Default → Primary → representation*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * title field in *Representation → Default → Primary → representation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Representation → Default → Primary → representation*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * talent name field in *Representation → Default → Primary → representation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[].talent_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  talent_name: prismic.KeyTextField;
+
+  /**
+   * talent link field in *Representation → Default → Primary → representation*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[].talent_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  talent_link: prismic.ContentRelationshipField;
+}
+
+/**
+ * Primary content in *Representation → Default → Primary*
+ */
+export interface RepresentationSliceDefaultPrimary {
+  /**
+   * representation field in *Representation → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  representation: prismic.GroupField<
+    Simplify<RepresentationSliceDefaultPrimaryRepresentationItem>
+  >;
+}
+
+/**
+ * Default variation for Representation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RepresentationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RepresentationSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Representation*
+ */
+type RepresentationSliceVariation = RepresentationSliceDefault;
+
+/**
+ * Representation Shared Slice
+ *
+ * - **API ID**: `representation`
+ * - **Description**: Representation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RepresentationSlice = prismic.SharedSlice<
+  "representation",
+  RepresentationSliceVariation
+>;
+
+/**
  * Primary content in *VideoHomePage → Default → Primary*
  */
 export interface VideoHomePageSliceDefaultPrimary {
@@ -832,11 +1876,28 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CoachingDocument,
+      CoachingDocumentData,
+      CoachingDocumentDataSlicesSlice,
+      ContactInfoDocument,
+      ContactInfoDocumentData,
       ContactMenuDocument,
       ContactMenuDocumentData,
+      FaqDocument,
+      FaqDocumentData,
+      FaqDocumentDataSlicesSlice,
+      HomepageDocument,
+      HomepageDocumentData,
+      HomepageDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataSlicesSlice,
+      NewsDocument,
+      NewsDocumentData,
+      NewsDocumentDataSlicesSlice,
+      PackageDocument,
+      PackageDocumentData,
+      PackageDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
@@ -860,11 +1921,30 @@ declare module "@prismicio/client" {
       DiapoSliceDefaultPrimary,
       DiapoSliceVariation,
       DiapoSliceDefault,
+      FaqSlice,
+      FaqSliceDefaultPrimaryFaqItem,
+      FaqSliceDefaultPrimary,
+      FaqSliceVariation,
+      FaqSliceDefault,
+      HomepageSlice,
+      HomepageSliceDefaultPrimary,
+      HomepageSliceVariation,
+      HomepageSliceDefault,
       NavigationItemSlice,
       NavigationItemSliceDefaultPrimary,
       NavigationItemSliceDefaultItem,
       NavigationItemSliceVariation,
       NavigationItemSliceDefault,
+      PackageSlice,
+      PackageSliceDefaultPrimaryPackageItem,
+      PackageSliceDefaultPrimary,
+      PackageSliceVariation,
+      PackageSliceDefault,
+      RepresentationSlice,
+      RepresentationSliceDefaultPrimaryRepresentationItem,
+      RepresentationSliceDefaultPrimary,
+      RepresentationSliceVariation,
+      RepresentationSliceDefault,
       VideoHomePageSlice,
       VideoHomePageSliceDefaultPrimary,
       VideoHomePageSliceVariation,

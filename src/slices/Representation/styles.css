@@ -1,0 +1,51 @@
+.representation-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 20px;
+}
+
+.film-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 20px; /* Margin between rows */
+}
+
+.film-card.odd {
+  transform: translateY(40px); /* Vertical offset for odd cards */
+}
+
+.film-image {
+  width: 100%;
+  height: auto;
+}
+
+.film-title {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.film-actor {
+  font-size: 1em;
+  margin-top: auto;
+}
+
+@media (max-width: 1200px) {
+  .representation-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .representation-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .representation-section {
+    grid-template-columns: 1fr;
+  }
+}

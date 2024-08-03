@@ -26,12 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`bg-[#070815] text-white ${montserrat.className} ${lato.className}`}
-      >
-        <Header />
+      <body className={` ${montserrat.className} ${lato.className}`}>
         <main>{children}</main>
-        <Footer />
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>

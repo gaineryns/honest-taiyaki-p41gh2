@@ -5,7 +5,9 @@ import Head from "next/head";
 export default async function Page() {
   const client = createClient();
   const talents = await client.getAllByType("talent");
-
+  const actorTalents = talents.filter(
+    (talent) => talent.data.category === "Dancer" && talent.data.enable,
+  );
   return (
     <div>
       <Head>
@@ -13,9 +15,8 @@ export default async function Page() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <ArtistGrid talents={talents} />
+        <ArtistGrid talents={actorTalents} />
       </main>
     </div>
   );
 }
-
