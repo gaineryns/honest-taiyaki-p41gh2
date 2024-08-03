@@ -1,0 +1,35 @@
+{
+  "id": "homepage",
+  "type": "SharedSlice",
+  "name": "Homepage",
+  "description": "Homepage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "video": {
+          "type": "Link",
+          "config": {
+            "label": "video",
+            "placeholder": "",
+            "select": "media"
+          }
+        },
+        "logo": {
+          "type": "Link",
+          "config": {
+            "label": "logo",
+            "placeholder": "",
+            "select": "media"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

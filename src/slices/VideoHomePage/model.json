@@ -1,0 +1,35 @@
+{
+  "id": "video_home_page",
+  "type": "SharedSlice",
+  "name": "VideoHomePage",
+  "description": "VideoHomePage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "CTA_link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "video": {
+          "type": "Link",
+          "config": {
+            "label": "video",
+            "placeholder": "",
+            "select": "media"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

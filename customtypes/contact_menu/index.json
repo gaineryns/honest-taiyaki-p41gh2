@@ -1,0 +1,32 @@
+{
+  "format": "custom",
+  "id": "contact_menu",
+  "label": "contact_menu",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "location",
+          "placeholder": ""
+        }
+      },
+      "phone": {
+        "type": "Text",
+        "config": {
+          "label": "phone",
+          "placeholder": ""
+        }
+      },
+      "hour": {
+        "type": "Text",
+        "config": {
+          "label": "hour",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

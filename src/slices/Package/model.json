@@ -1,0 +1,79 @@
+{
+  "id": "package",
+  "type": "SharedSlice",
+  "name": "Package",
+  "description": "Package",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "package": {
+          "type": "Group",
+          "config": {
+            "label": "package",
+            "repeat": true,
+            "fields": {
+              "category": {
+                "type": "Text",
+                "config": {
+                  "label": "category",
+                  "placeholder": ""
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "delivery": {
+                "type": "Text",
+                "config": {
+                  "label": "delivery",
+                  "placeholder": ""
+                }
+              },
+              "revision": {
+                "type": "Text",
+                "config": {
+                  "label": "revision",
+                  "placeholder": ""
+                }
+              },
+              "duration": {
+                "type": "Text",
+                "config": {
+                  "label": "duration",
+                  "placeholder": ""
+                }
+              },
+              "price": {
+                "type": "Number",
+                "config": {
+                  "label": "price",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

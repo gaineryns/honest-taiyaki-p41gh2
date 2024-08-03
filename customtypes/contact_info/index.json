@@ -1,0 +1,91 @@
+{
+  "format": "custom",
+  "id": "contact_info",
+  "label": "contact_info",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "id",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "credo": {
+        "type": "StructuredText",
+        "config": {
+          "label": "credo",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "location",
+          "placeholder": ""
+        }
+      },
+      "phone": {
+        "type": "Text",
+        "config": {
+          "label": "phone",
+          "placeholder": ""
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "email",
+          "placeholder": ""
+        }
+      },
+      "open_hour_and_day": {
+        "type": "Text",
+        "config": {
+          "label": "open hour and day",
+          "placeholder": ""
+        }
+      },
+      "twitter": {
+        "type": "Text",
+        "config": {
+          "label": "twitter",
+          "placeholder": ""
+        }
+      },
+      "spotlight": {
+        "type": "Text",
+        "config": {
+          "label": "spotlight",
+          "placeholder": ""
+        }
+      },
+      "instagram": {
+        "type": "Text",
+        "config": {
+          "label": "instagram",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

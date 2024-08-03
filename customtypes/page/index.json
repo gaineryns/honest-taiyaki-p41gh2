@@ -27,10 +27,16 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "hero": {
+            "faq": {
               "type": "SharedSlice"
             },
-            "rich_text": {
+            "diapo": {
+              "type": "SharedSlice"
+            },
+            "about": {
+              "type": "SharedSlice"
+            },
+            "video_home_page": {
               "type": "SharedSlice"
             }
           }

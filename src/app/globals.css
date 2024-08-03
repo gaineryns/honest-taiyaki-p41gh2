@@ -1,3 +1,232 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "../styles/navbar.css";
+/* globals.css */
+
+:root {
+  --font-primary: "Montserrat", "Lato", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+.logo-image {
+  width: 150px; /* Maintain the natural width up to a max width */
+  max-width: 100%; /* Prevent the logo from exceeding the width of its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* style de video */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* pleine hauteur de l'écran */
+  overflow: hidden;
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-width-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ajoutez ce CSS à votre fichier de styles global ou spécifique au composant */
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.shadow-lg {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+/* presentation */
+
+.about-slice-wrapper {
+  width: 100%;
+  background-color: #000;
+  padding: 2rem 0;
+}
+
+.about-slice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-slice img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+.about-slice .title {
+  text-align: left;
+  margin-bottom: 2rem;
+  font-size: 2.5rem; /* Increased font size for the title */
+  font-weight: bold;
+}
+
+.about-slice .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+}
+
+.about-slice .person-details {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.about-slice .person-details h2 {
+  font-size: 1.75rem; /* Increased font size for the person's name */
+  font-weight: bold;
+}
+
+.about-slice .person-details p {
+  font-size: 1.25rem;
+  font-weight: 300; /* Thinner font weight for the person's title */
+}
+
+.about-slice .text-section {
+  max-width: 600px;
+  margin-left: 2rem;
+  text-align: left; /* Align text to the left */
+  font-size: 1.25rem; /* Increased font size for the description */
+}
+
+.about-slice .text-section p {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .about-slice .content-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .about-slice .text-section {
+    margin-left: 2rem;
+  }
+}
+
+.diapo-slice {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.diapo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.diapo-slice h2 {
+  font-size: 2rem; /* Adjust as needed */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.diapo-slice img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.cta-button {
+  @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-[#e8be69] bg-[#e8be69] px-6 py-2 text-sm font-normal text-white shadow-none outline-none transition-colors duration-200 hover:bg-transparent hover:text-[#e8be69];
+}
+
+.cta-button-alt {
+  @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-[#e8be69] bg-white px-6 py-2 text-sm font-normal text-black shadow-none outline-none transition-colors duration-200 hover:bg-[#e8be69] hover:text-white;
+}
+
+.fixed-width-button {
+  width: 150px; /* Adjust this width as needed */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Tailwind CSS classes for z-index and positioning are already included in the component. 
+   If you prefer to use plain CSS, you can add the following styles: */
+
+.menu-item {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  z-index: 50;
+  margin-top: 0.5rem; /* Adjust as needed */
+  width: 12rem; /* Adjust as needed */
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu-item {
+  padding: 0.5rem;
+}
+
+.submenu-item:hover {
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+}
