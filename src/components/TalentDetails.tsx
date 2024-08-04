@@ -54,7 +54,7 @@ const TalentDetails = ({ talent }: { talent: TalentProps }) => {
               field={talent.head_shot}
               className="mb-4 h-[270px] w-full rounded-lg object-cover shadow-md"
             />
-            {talent.spotlight_link?.url && (
+            {talent.spotlight_link && (
               <PrismicNextLink field={talent.spotlight_link}>
                 <Image
                   src="https://images.prismic.io/broocksagency/Zp1cwx5LeNNTxVGI_spotlight-logo.webp?auto=format,compress"
@@ -65,7 +65,7 @@ const TalentDetails = ({ talent }: { talent: TalentProps }) => {
                 />
               </PrismicNextLink>
             )}
-            {talent.imdb_link?.url && (
+            {talent.imdb_link && (
               <PrismicNextLink field={talent.imdb_link}>
                 <Image
                   src="https://broocksagency.cdn.prismic.io/broocksagency/Zp1deR5LeNNTxVGb_IMDB_Logo_2016.svg"

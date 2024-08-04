@@ -12,6 +12,10 @@ module.exports = withMT({
       fontFamily: {
         sans: ["var(--font-dm-sans)"],
       },
+      colors: {
+        broocksgold: "#e9c16b",
+        broocksgray: "#E7e6e6",
+      },
     },
   },
   plugins: [],

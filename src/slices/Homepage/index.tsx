@@ -17,10 +17,8 @@ export type HomepageProps = SliceComponentProps<Content.HomepageSlice>;
 const Homepage = ({ slice }: HomepageProps): JSX.Element => {
   const [logoVisible, setLogoVisible] = useState(true);
 
-  const videoUrl =
-    slice.primary.video.link_type === "Media" ? slice.primary.video.url : "";
-  const logoUrl =
-    slice.primary.logo.link_type === "Media" ? slice.primary.logo.url : "";
+  const videoUrl = slice.primary.video.link_type === "Media" ? (slice.primary.video as any).url : "";
+  const logoUrl = slice.primary.logo.link_type === "Media" ? (slice.primary.logo as any).url : "";
 
   const handleVideoClick = () => {
     setLogoVisible(false);

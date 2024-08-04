@@ -4,13 +4,14 @@ import Image from "next/image";
 import { FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { PrismicRichText, PrismicImage } from "@prismicio/react";
 
-function ContactCard({ data }) {
+
+
+function ContactCard({ data }: any) {
   return (
     <div className="flex w-full">
       <div className="flex w-1/3 flex-col items-center justify-center bg-black p-10 text-center text-white">
         <PrismicRichText
           field={data.credo}
-          className="text-xl font-semibold md:text-3xl"
         />
       </div>
       <div className="w-2/3 bg-yellow-300 p-8">
@@ -19,7 +20,6 @@ function ContactCard({ data }) {
           <div className="mr-4 h-24 w-24">
             <PrismicImage
               field={data.image}
-              alt="Profile Picture"
               style={{ borderRadius: "50%" }}
             />
           </div>

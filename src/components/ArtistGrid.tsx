@@ -37,8 +37,10 @@ export default function ArtistGrid({ talents }: TalentsProps) {
     selectedCategories.length === 0 ||
     selectedCategories.length === categories.length
       ? talents
-      : talents.filter((talent) =>
-          selectedCategories.includes(talent.data.genre.toLowerCase()),
+      : talents.filter(
+          (talent) =>
+            talent.data.genre &&
+            selectedCategories.includes(talent.data.genre.toLowerCase()),
         );
 
   return (
@@ -78,8 +80,11 @@ export default function ArtistGrid({ talents }: TalentsProps) {
                   transition={{ duration: 0.5 }}
                 >
                   <Image
-                    src={talent.data.head_shot.url}
-                    alt={talent.data.name}
+                    src={
+                      talent.data.head_shot.url ||
+                      "https://t4.ftcdn.net/jpg/02/17/34/67/360_F_217346782_7XpCTt8bLNJqvVAaDZJwvZjm0epQmj6j.jpg"
+                    }
+                    alt={talent.data.name || "Unknown"}
                     layout="fill"
                     objectFit="cover"
                     className="grayscale transition-all duration-500 hover:grayscale-0"

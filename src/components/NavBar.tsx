@@ -53,7 +53,7 @@ export default function NavBar({ globalNav }: NavbarProps) {
           <Link href="/">
             <PrismicNextImage
               field={globalNav.data.fallback_og_image}
-              alt={globalNav.data.site_title || "broocksagency Home Page"}
+              // alt={globalNav.data.site_title || "broocksagency Home Page"}
               className="h-12 w-auto"
             />
             <span className="sr-only">Glisten.ai Home Page</span>
