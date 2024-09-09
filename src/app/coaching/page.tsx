@@ -6,7 +6,7 @@ import { components } from "@/slices";
 
 const customComponents = {
   hyperlink: ({ children, node }: any) => (
-    <a href={node.data.url} className="text-broocksgold hover:text-broocksgold">
+    <a href={node.data.url} className="text-broocksprimary hover:text-broocksprimary">
       {children}
     </a>
   ),

@@ -180,11 +180,11 @@ body {
 }
 
 .cta-button {
-  @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-[#e8be69] bg-[#e8be69] px-6 py-2 text-sm font-normal text-white shadow-none outline-none transition-colors duration-200 hover:bg-transparent hover:text-[#e8be69];
+  @apply border-broocksprimary bg-broocksprimary hover:text-broocksprimary z-10 box-border cursor-pointer whitespace-nowrap rounded-full border px-6 py-2 text-sm font-normal text-white shadow-none outline-none transition-colors duration-200 hover:bg-transparent;
 }
 
 .cta-button-alt {
-  @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-[#e8be69] bg-white px-6 py-2 text-sm font-normal text-black shadow-none outline-none transition-colors duration-200 hover:bg-[#e8be69] hover:text-white;
+  @apply border-broocksprimary hover:bg-broocksprimary z-10 box-border cursor-pointer whitespace-nowrap rounded-full border bg-white px-6 py-2 text-sm font-normal text-black shadow-none outline-none transition-colors duration-200 hover:text-white;
 }
 
 .fixed-width-button {

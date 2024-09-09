@@ -7,7 +7,7 @@ export default async function Footer() {
   const settings = await client.getSingle("contact_info");
   const currentYear = new Date().getFullYear();
 
-  let iconStyles = { color: "#E8BE69", fontSize: "1.0em" };
+  let iconStyles = { fontSize: "1.0em" };
   return (
     <footer className="border-slate-600 flex flex-col items-center justify-between gap-6 border-t bg-gray-500 px-8 py-2 md:flex-row">
       <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-white md:flex-row md:items-center">
@@ -15,19 +15,19 @@ export default async function Footer() {
           <li key={settings.data.location} className="flex items-center">
             <HiLocationMarker
               style={iconStyles}
-              className="mr-2 inline-block"
+              className="mr-2 inline-block text-broocksprimary"
             />
             {settings.data.location}
           </li>
           <li key={settings.data.phone} className="flex items-center">
-            <HiPhone style={iconStyles} className="mr-2 inline-block" />
+            <HiPhone style={iconStyles} className="mr-2 inline-block  text-broocksprimary" />
             {settings.data.phone}
           </li>
           <li
             key={settings.data.open_hour_and_day}
             className="flex items-center"
           >
-            <HiClock style={iconStyles} className="mr-2 inline-block" />
+            <HiClock style={iconStyles} className="mr-2 inline-block  text-broocksprimary" />
             {settings.data.open_hour_and_day}
           </li>
         </ul>

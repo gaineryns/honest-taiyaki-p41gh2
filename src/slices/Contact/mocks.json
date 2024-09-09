@@ -1,0 +1,99 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "GET IN TOUCH WITH ME",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 3,
+									"end": 13
+								}
+							]
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"key_word": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Your success is my priority.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"location": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Dublin, Ireland"
+			},
+			"phone": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "(+353) 89 978 4353"
+			},
+			"email": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Stephanie@broocksagency.com"
+			},
+			"open_hour_and_day": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "MON - FRI: 09:00 - 18:00"
+			},
+			"twitter": {
+				"__TYPE__": "FieldContent",
+				"value": "handle",
+				"type": "Text"
+			},
+			"spotlight": {
+				"__TYPE__": "FieldContent",
+				"value": "forgot",
+				"type": "Text"
+			},
+			"instagram": {
+				"__TYPE__": "FieldContent",
+				"value": "creature",
+				"type": "Text"
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+					"width": 4380,
+					"height": 2895
+				},
+				"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+				"width": 4380,
+				"height": 2895,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

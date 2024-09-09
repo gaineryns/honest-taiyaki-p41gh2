@@ -42,7 +42,7 @@ const Package = ({ slice }: PackageProps): JSX.Element => {
               {item.duration}
             </p>
           </div>
-          <div className="w-full rounded-b-lg bg-broocksgold p-4 text-center text-2xl font-bold">
+          <div className="bg-broocksprimary w-full rounded-b-lg p-4 text-center text-2xl font-bold">
             £{item.price}
           </div>
         </div>

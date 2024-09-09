@@ -34,7 +34,7 @@
 }
 
 .icon {
-  color: #e8be69;
+  @apply  text-broocksprimary;
   font-size: 1.5rem;
   margin-right: 0.5rem;
 }

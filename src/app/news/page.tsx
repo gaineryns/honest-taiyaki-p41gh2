@@ -11,7 +11,7 @@ export default async function Page() {
   return (
     <div className="container">
       <h1>{page.data.title}</h1>
-      <SliceZone slices={page.data.slices} components={components} />;
+      <SliceZone slices={page.data.slices} components={components} />
     </div>
   );
 }

@@ -15,6 +15,7 @@ module.exports = withMT({
       colors: {
         broocksgold: "#e9c16b",
         broocksgray: "#E7e6e6",
+        broocksprimary: "#533696",
       },
     },
   },
