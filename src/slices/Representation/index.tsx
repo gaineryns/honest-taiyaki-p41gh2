@@ -9,14 +9,22 @@ export type RepresentationProps =
   SliceComponentProps<Content.RepresentationSlice>;
 
 /**
+ * Type Guard to check if the `talent_link` is not empty.
+ */
+const isTalentLinkAvailable = (
+  talentLink: any,
+): talentLink is { uid: string } =>
+  !!talentLink && typeof talentLink.uid === "string";
+
+/**
  * Component for "Representation" Slices.
  */
-
 const Representation = ({ slice }: RepresentationProps): JSX.Element => {
   console.log(
     "Representation slice:",
     slice.primary.representation[0]?.talent_link,
   );
+
   return (
     <section
       className="grid grid-cols-1 gap-16 p-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
@@ -31,7 +39,7 @@ const Representation = ({ slice }: RepresentationProps): JSX.Element => {
           }`}
         >
           <PrismicNextImage field={item.image} className="h-auto w-full" />
-          <h2 className="text-md text-broocksprimary my-2 font-bold">
+          <h2 className="text-md my-2 font-bold text-broocksprimary">
             {item.title}
           </h2>
           <div className="text-xs">
@@ -39,11 +47,10 @@ const Representation = ({ slice }: RepresentationProps): JSX.Element => {
           </div>
           <p className="mt-auto text-sm">
             <strong>Actor: </strong>
-            {/* Extraction des informations du lien */}
-            {item.talent_link && item.talent_link.uid && (
+            {isTalentLinkAvailable(item.talent_link) && (
               <PrismicNextLink
                 href={`/talents/${item.talent_link.uid}`}
-                className="text-broocksprimary font-semibold hover:underline"
+                className="font-semibold text-broocksprimary hover:underline"
               >
                 {item.talent_name}
               </PrismicNextLink>
