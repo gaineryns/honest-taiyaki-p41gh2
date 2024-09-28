@@ -29,7 +29,7 @@ const VideoHomePage = ({ slice }: VideoHomePageProps): JSX.Element => {
         <div className="centered-button absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
           <PrismicNextLink
             field={slice.primary.cta_link}
-            className="font-montserrat rounded-full border border-[#e8be69] bg-[#e8be69] px-8 py-3 text-sm font-normal text-white transition-colors duration-200 hover:bg-transparent hover:text-[#e8be69]"
+            className="font-montserrat border-broocksprimary bg-broocksprimary hover:text-broocksprimary rounded-full border px-8 py-3 text-sm font-normal text-white transition-colors duration-200 hover:bg-transparent"
           >
             View Talents
           </PrismicNextLink>

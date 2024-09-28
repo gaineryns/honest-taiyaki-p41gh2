@@ -23,7 +23,7 @@
 
 .menu-item > button:hover,
 .menu-item > a:hover {
-  color: #e8be69;
+  @apply text-broocksprimary;
 }
 .submenu {
   display: none;

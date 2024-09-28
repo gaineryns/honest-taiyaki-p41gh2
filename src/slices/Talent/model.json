@@ -86,11 +86,7 @@
           "config": {
             "label": "genre",
             "placeholder": "genre",
-            "options": [
-              "Male",
-              "Female",
-              "No binary"
-            ]
+            "options": ["Male", "Female", "No binary"]
           }
         },
         "enable": {
@@ -128,10 +124,7 @@
           "config": {
             "label": "category",
             "placeholder": "",
-            "options": [
-              "Dancers",
-              "Actors"
-            ]
+            "options": ["Dancers", "Actors"]
           }
         }
       },

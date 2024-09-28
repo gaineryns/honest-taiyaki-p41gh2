@@ -1,44 +1,44 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"images": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"media",
-								{
-									"__TYPE__": "LinkContent",
-									"value": {
-										"id": "mock_Media_link",
-										"kind": "image/jpeg",
-										"name": "mock_name",
-										"url": "https://source.unsplash.com/daily",
-										"size": "0",
-										"__TYPE__": "FileLink"
-									}
-								}
-							]
-						]
-					}
-				]
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Fugiat exercitation sint dolore tempor eu ex non qui laboris. Veniam aliqua consectetur ad ex commodo eu. Nostrud aute tempor qui."
-						}
-					}
-				]
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "images": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "media",
+                {
+                  "__TYPE__": "LinkContent",
+                  "value": {
+                    "id": "mock_Media_link",
+                    "kind": "image/jpeg",
+                    "name": "mock_name",
+                    "url": "https://source.unsplash.com/daily",
+                    "size": "0",
+                    "__TYPE__": "FileLink"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Fugiat exercitation sint dolore tempor eu ex non qui laboris. Veniam aliqua consectetur ad ex commodo eu. Nostrud aute tempor qui."
+            }
+          }
+        ]
+      }
+    },
+    "items": []
+  }
 ]

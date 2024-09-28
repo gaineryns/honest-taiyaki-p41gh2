@@ -1,123 +1,123 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"gallery_image": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
-					"width": 3277,
-					"height": 4092
-				},
-				"url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
-				"width": 3277,
-				"height": 4092,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"credits": null,
-				"alt": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
-			},
-			"name": {
-				"__TYPE__": "FieldContent",
-				"value": "shore",
-				"type": "Text"
-			},
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Incididunt cillum Lorem ex est nisi ullamco qui est elit amet."
-						}
-					}
-				]
-			},
-			"comp_card": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"id": "mock_Media_link",
-					"kind": "image/jpeg",
-					"name": "mock_name",
-					"url": "https://source.unsplash.com/daily",
-					"size": "0",
-					"__TYPE__": "FileLink"
-				}
-			},
-			"cv_file": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"id": "mock_Media_link",
-					"kind": "image/jpeg",
-					"name": "mock_name",
-					"url": "https://source.unsplash.com/daily",
-					"size": "0",
-					"__TYPE__": "FileLink"
-				}
-			},
-			"height_by_feet_and_inches": {
-				"__TYPE__": "FieldContent",
-				"value": "lose",
-				"type": "Text"
-			},
-			"eye_color": {
-				"__TYPE__": "FieldContent",
-				"value": "buried",
-				"type": "Text"
-			},
-			"hair": {
-				"__TYPE__": "FieldContent",
-				"value": "strip",
-				"type": "Text"
-			},
-			"genre": {
-				"__TYPE__": "FieldContent",
-				"value": "Female",
-				"type": "Select"
-			},
-			"enable": {
-				"__TYPE__": "BooleanContent",
-				"value": true
-			},
-			"relation": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "DocumentLink",
-					"id": "mock_document_id"
-				}
-			},
-			"vimeo_link": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://google.com"
-				}
-			},
-			"playing_age_min": {
-				"__TYPE__": "FieldContent",
-				"value": "99",
-				"type": "Number"
-			},
-			"playing_age_max": {
-				"__TYPE__": "FieldContent",
-				"value": "36",
-				"type": "Number"
-			},
-			"category": {
-				"__TYPE__": "FieldContent",
-				"value": "Dancers",
-				"type": "Select"
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "gallery_image": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+          "width": 3277,
+          "height": 4092
+        },
+        "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+        "width": 3277,
+        "height": 4092,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {}
+      },
+      "name": {
+        "__TYPE__": "FieldContent",
+        "value": "shore",
+        "type": "Text"
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Incididunt cillum Lorem ex est nisi ullamco qui est elit amet."
+            }
+          }
+        ]
+      },
+      "comp_card": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "id": "mock_Media_link",
+          "kind": "image/jpeg",
+          "name": "mock_name",
+          "url": "https://source.unsplash.com/daily",
+          "size": "0",
+          "__TYPE__": "FileLink"
+        }
+      },
+      "cv_file": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "id": "mock_Media_link",
+          "kind": "image/jpeg",
+          "name": "mock_name",
+          "url": "https://source.unsplash.com/daily",
+          "size": "0",
+          "__TYPE__": "FileLink"
+        }
+      },
+      "height_by_feet_and_inches": {
+        "__TYPE__": "FieldContent",
+        "value": "lose",
+        "type": "Text"
+      },
+      "eye_color": {
+        "__TYPE__": "FieldContent",
+        "value": "buried",
+        "type": "Text"
+      },
+      "hair": {
+        "__TYPE__": "FieldContent",
+        "value": "strip",
+        "type": "Text"
+      },
+      "genre": {
+        "__TYPE__": "FieldContent",
+        "value": "Female",
+        "type": "Select"
+      },
+      "enable": {
+        "__TYPE__": "BooleanContent",
+        "value": true
+      },
+      "relation": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock_document_id"
+        }
+      },
+      "vimeo_link": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "http://google.com"
+        }
+      },
+      "playing_age_min": {
+        "__TYPE__": "FieldContent",
+        "value": "99",
+        "type": "Number"
+      },
+      "playing_age_max": {
+        "__TYPE__": "FieldContent",
+        "value": "36",
+        "type": "Number"
+      },
+      "category": {
+        "__TYPE__": "FieldContent",
+        "value": "Dancers",
+        "type": "Select"
+      }
+    },
+    "items": []
+  }
 ]

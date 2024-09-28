@@ -14,16 +14,18 @@
         }
       },
       "title": {
-        "type": "Text",
-        "config": {
-          "label": "title",
-          "placeholder": ""
-        }
-      },
-      "credo": {
         "type": "StructuredText",
         "config": {
-          "label": "credo",
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "key_word": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Key word",
           "placeholder": "",
           "allowTargetBlank": true,
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -32,58 +34,69 @@
       "location": {
         "type": "Text",
         "config": {
-          "label": "location",
+          "label": "Location",
           "placeholder": ""
         }
       },
       "phone": {
         "type": "Text",
         "config": {
-          "label": "phone",
+          "label": "Phone",
           "placeholder": ""
         }
       },
       "email": {
         "type": "Text",
         "config": {
-          "label": "email",
+          "label": "Email",
           "placeholder": ""
         }
       },
       "open_hour_and_day": {
         "type": "Text",
         "config": {
-          "label": "open hour and day",
+          "label": "Open hour and day",
           "placeholder": ""
         }
       },
       "twitter": {
         "type": "Text",
         "config": {
-          "label": "twitter",
+          "label": "Twitter",
           "placeholder": ""
         }
       },
       "spotlight": {
         "type": "Text",
         "config": {
-          "label": "spotlight",
+          "label": "Spotlight",
           "placeholder": ""
         }
       },
       "instagram": {
         "type": "Text",
         "config": {
-          "label": "instagram",
+          "label": "Instagram",
           "placeholder": ""
         }
       },
       "image": {
         "type": "Image",
         "config": {
-          "label": "image",
+          "label": "Image",
           "constraint": {},
           "thumbnails": []
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "contact": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

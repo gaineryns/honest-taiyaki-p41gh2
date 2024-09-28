@@ -14,8 +14,6 @@ const Actor = ({ slice }: ActorProps): JSX.Element => {
   const talent = {
     name: slice.primary.name,
     gallery_image: slice.primary.gallery_image,
-    spotlight_link: slice.primary.spotlight_link,
-    imdb_link: slice.primary.imdb_link,
     vimeo_link: slice.primary.vimeo_link,
     height_by_feet_and_inches: slice.primary.height_by_feet_and_inches,
     eye_color: slice.primary.eye_color,
@@ -33,7 +31,6 @@ const Actor = ({ slice }: ActorProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="mx-auto max-w-6xl rounded-lg bg-white text-black shadow-lg"
     >
-      <TalentDetails talent={talent} />
     </section>
   );
 };

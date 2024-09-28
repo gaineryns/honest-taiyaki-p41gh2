@@ -69,34 +69,36 @@ export type CoachingDocument<Lang extends string = string> =
     Lang
   >;
 
+type ContactInfoDocumentDataSlicesSlice = ContactSlice;
+
 /**
  * Content for contact_info documents
  */
 interface ContactInfoDocumentData {
   /**
-   * title field in *contact_info*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_info.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * credo field in *contact_info*
+   * Title field in *contact_info*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: contact_info.credo
+   * - **API ID Path**: contact_info.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  credo: prismic.RichTextField;
+  title: prismic.RichTextField;
 
   /**
-   * location field in *contact_info*
+   * Key word field in *contact_info*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.key_word
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  key_word: prismic.RichTextField;
+
+  /**
+   * Location field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -107,7 +109,7 @@ interface ContactInfoDocumentData {
   location: prismic.KeyTextField;
 
   /**
-   * phone field in *contact_info*
+   * Phone field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -118,7 +120,7 @@ interface ContactInfoDocumentData {
   phone: prismic.KeyTextField;
 
   /**
-   * email field in *contact_info*
+   * Email field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -129,7 +131,7 @@ interface ContactInfoDocumentData {
   email: prismic.KeyTextField;
 
   /**
-   * open hour and day field in *contact_info*
+   * Open hour and day field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -140,7 +142,7 @@ interface ContactInfoDocumentData {
   open_hour_and_day: prismic.KeyTextField;
 
   /**
-   * twitter field in *contact_info*
+   * Twitter field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -151,7 +153,7 @@ interface ContactInfoDocumentData {
   twitter: prismic.KeyTextField;
 
   /**
-   * spotlight field in *contact_info*
+   * Spotlight field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -162,7 +164,7 @@ interface ContactInfoDocumentData {
   spotlight: prismic.KeyTextField;
 
   /**
-   * instagram field in *contact_info*
+   * Instagram field in *contact_info*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -173,7 +175,7 @@ interface ContactInfoDocumentData {
   instagram: prismic.KeyTextField;
 
   /**
-   * image field in *contact_info*
+   * Image field in *contact_info*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -182,6 +184,17 @@ interface ContactInfoDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *contact_info*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ContactInfoDocumentDataSlicesSlice>;
 }
 
 /**
@@ -1291,6 +1304,141 @@ type ActorSliceVariation = ActorSliceDefault;
 export type ActorSlice = prismic.SharedSlice<"actor", ActorSliceVariation>;
 
 /**
+ * Primary content in *Contact → Default → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+  /**
+   * Title field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Key word field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.key_word
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  key_word: prismic.RichTextField;
+
+  /**
+   * Location field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Phone field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.phone
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone: prismic.KeyTextField;
+
+  /**
+   * Email field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Open hour and day field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.open_hour_and_day
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  open_hour_and_day: prismic.KeyTextField;
+
+  /**
+   * Twitter field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.twitter
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  twitter: prismic.KeyTextField;
+
+  /**
+   * Spotlight field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.spotlight
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  spotlight: prismic.KeyTextField;
+
+  /**
+   * Instagram field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.instagram
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  instagram: prismic.KeyTextField;
+
+  /**
+   * Image field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
+>;
+
+/**
  * Item in *Carousel → Default → Primary → images*
  */
 export interface DiapoSliceDefaultPrimaryImagesItem {
@@ -1453,6 +1601,88 @@ type FaqSliceVariation = FaqSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FaqSlice = prismic.SharedSlice<"faq", FaqSliceVariation>;
+
+/**
+ * Primary content in *Hero → Default → Primary*
+ */
+export interface HeroSliceDefaultPrimary {
+  /**
+   * Heading field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button Link field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Label field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * image field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Hero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HeroSliceVariation = HeroSliceDefault;
+
+/**
+ * Hero Shared Slice
+ *
+ * - **API ID**: `hero`
+ * - **Description**: Hero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
  * Primary content in *Homepage → Default → Primary*
@@ -1761,7 +1991,7 @@ export interface RepresentationSliceDefaultPrimaryRepresentationItem {
    * - **API ID Path**: representation.default.primary.representation[].talent_link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  talent_link: prismic.ContentRelationshipField;
+  talent_link: prismic.ContentRelationshipField<"talent">;
 }
 
 /**
@@ -1881,6 +2111,7 @@ declare module "@prismicio/client" {
       CoachingDocumentDataSlicesSlice,
       ContactInfoDocument,
       ContactInfoDocumentData,
+      ContactInfoDocumentDataSlicesSlice,
       ContactMenuDocument,
       ContactMenuDocumentData,
       FaqDocument,
@@ -1916,6 +2147,10 @@ declare module "@prismicio/client" {
       ActorSliceDefaultPrimary,
       ActorSliceVariation,
       ActorSliceDefault,
+      ContactSlice,
+      ContactSliceDefaultPrimary,
+      ContactSliceVariation,
+      ContactSliceDefault,
       DiapoSlice,
       DiapoSliceDefaultPrimaryImagesItem,
       DiapoSliceDefaultPrimary,
@@ -1926,6 +2161,10 @@ declare module "@prismicio/client" {
       FaqSliceDefaultPrimary,
       FaqSliceVariation,
       FaqSliceDefault,
+      HeroSlice,
+      HeroSliceDefaultPrimary,
+      HeroSliceVariation,
+      HeroSliceDefault,
       HomepageSlice,
       HomepageSliceDefaultPrimary,
       HomepageSliceVariation,

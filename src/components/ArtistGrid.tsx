@@ -37,8 +37,10 @@ export default function ArtistGrid({ talents }: TalentsProps) {
     selectedCategories.length === 0 ||
     selectedCategories.length === categories.length
       ? talents
-      : talents.filter((talent) =>
-          selectedCategories.includes(talent.data.genre.toLowerCase()),
+      : talents.filter(
+          (talent) =>
+            talent.data.genre &&
+            selectedCategories.includes(talent.data.genre.toLowerCase()),
         );
 
   return (
@@ -51,8 +53,8 @@ export default function ArtistGrid({ talents }: TalentsProps) {
               onClick={() => toggleCategory(category)}
               className={`rounded-full border px-4 py-2 text-sm uppercase ${
                 selectedCategories.includes(category)
-                  ? "border-[#e8be69] bg-[#e8be69] text-white"
-                  : "border-[#e8be69] bg-transparent text-black"
+                  ? "border-broocksprimary bg-broocksprimary text-white"
+                  : "border-broocksprimary bg-transparent text-black"
               }`}
             >
               {category}
@@ -68,7 +70,7 @@ export default function ArtistGrid({ talents }: TalentsProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1 }}
             layout
-            className="relative cursor-pointer"
+            className="group relative cursor-pointer"
           >
             <Link href={`/talents/${talent.uid}`}>
               <div className="relative h-[280px] w-full overflow-hidden">
@@ -78,15 +80,18 @@ export default function ArtistGrid({ talents }: TalentsProps) {
                   transition={{ duration: 0.5 }}
                 >
                   <Image
-                    src={talent.data.head_shot.url}
-                    alt={talent.data.name}
+                    src={
+                      talent.data.head_shot.url ||
+                      "https://t4.ftcdn.net/jpg/02/17/34/67/360_F_217346782_7XpCTt8bLNJqvVAaDZJwvZjm0epQmj6j.jpg"
+                    }
+                    alt={talent.data.name || "Unknown"}
                     layout="fill"
                     objectFit="cover"
-                    className="grayscale transition-all duration-500 hover:grayscale-0"
+                    className="transition-all duration-500"
                   />
                 </motion.div>
               </div>
-              <button className="font-montserrat mx-auto mt-2 block w-[70%] rounded-full border border-[#e8be69] bg-transparent px-2 py-1 text-center uppercase text-black">
+              <button className="font-montserrat border-broocksprimary group-hover:bg-broocksprimary focus:bg-broocksprimary mx-auto mt-2 block w-[70%] rounded-full border bg-transparent px-2 py-1 text-center uppercase text-black transition-colors duration-300 focus:text-white group-hover:text-white">
                 {talent.data.name}
               </button>
             </Link>

@@ -5,6 +5,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { Carousel } from "@material-tailwind/react";
 import { PrismicRichText } from "@prismicio/react";
+import Image from "next/image";
 
 /**
  * Props for `Diapo`.
@@ -41,13 +42,18 @@ const Diapo = ({ slice }: DiapoProps): JSX.Element => {
           autoplay={true}
           loop={true}
           autoplayDelay={3000}
+          placeholder="Carousel Placeholder"
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           {slice.primary.images.map((item, index) => (
-            <img
+            <Image
               key={index}
-              src={item.media.url}
-              alt={item.media.alt || `Slide ${index + 1}`}
-              className="h-full w-full object-cover"
+              src={(item.media as any).url}
+              alt={(item.media as any).alt || `Slide ${index + 1}`}
+              layout="fill"
+              objectFit="cover"
+              className="h-full w-full"
             />
           ))}
         </Carousel>

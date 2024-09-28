@@ -54,7 +54,7 @@ const TalentDetails = ({ talent }: { talent: TalentProps }) => {
               field={talent.head_shot}
               className="mb-4 h-[270px] w-full rounded-lg object-cover shadow-md"
             />
-            {talent.spotlight_link?.url && (
+            {talent.spotlight_link && (
               <PrismicNextLink field={talent.spotlight_link}>
                 <Image
                   src="https://images.prismic.io/broocksagency/Zp1cwx5LeNNTxVGI_spotlight-logo.webp?auto=format,compress"
@@ -65,7 +65,7 @@ const TalentDetails = ({ talent }: { talent: TalentProps }) => {
                 />
               </PrismicNextLink>
             )}
-            {talent.imdb_link?.url && (
+            {talent.imdb_link && (
               <PrismicNextLink field={talent.imdb_link}>
                 <Image
                   src="https://broocksagency.cdn.prismic.io/broocksagency/Zp1deR5LeNNTxVGb_IMDB_Logo_2016.svg"
@@ -105,7 +105,7 @@ const TalentDetails = ({ talent }: { talent: TalentProps }) => {
       </div>
 
       <div className="flex flex-wrap pb-10 pt-10">
-        <div className="flex w-full flex-col items-center border-r-2 border-[#e8be69] p-4 md:w-1/3">
+        <div className="border-broocksprimary flex w-full flex-col items-center border-r-2 p-4 md:w-1/3">
           <PrismicNextLink
             field={talent.cv_file}
             className="cta-button-alt fixed-width-button mb-4 text-center"
