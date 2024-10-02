@@ -16,7 +16,7 @@
       "title": {
         "type": "StructuredText",
         "config": {
-          "label": "Title",
+          "label": "title",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "heading1"
@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "article": {
+              "type": "SharedSlice"
+            },
             "faq": {
               "type": "SharedSlice"
             },

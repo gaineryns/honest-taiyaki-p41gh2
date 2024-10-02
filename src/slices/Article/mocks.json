@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "army",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Pariatur consectetur tempor nisi elit laborum anim pariatur nostrud commodo deserunt amet minim sint ullamco aliquip. Eu cillum adipisicing elit ea nulla do in ut nostrud. Sunt anim incididunt consequat aute exercitation do consequat minim eu nostrud veniam laboris velit do."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

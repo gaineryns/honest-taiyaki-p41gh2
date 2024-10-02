@@ -20,11 +20,9 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <h1 className="font-broocksprimary my-8 text-left text-4xl font-bold">
-        Contact
-      </h1>
+      <PrismicRichText field={page.data.title} />
       <SliceZone slices={page.data.slices} components={components} />
-      <section className="flex w-full">
+      <section className="mt-[100px] flex w-full">
         <div className="flex w-1/3 items-center justify-center bg-purple-700 p-4 text-white">
           <blockquote className="relative text-center text-xl">
             <BiSolidQuoteAltLeft className="absolute -left-4 -top-2 text-xl" />
@@ -32,9 +30,9 @@ export default async function Page() {
             <BiSolidQuoteAltRight className="absolute -bottom-2 -right-4 text-xl" />
           </blockquote>
         </div>
-        <div className="flex w-2/3 flex-col items-center justify-center bg-white p-8">
+        <div className="flex w-2/3 flex-col items-center justify-center bg-gray-300 p-8">
           <div className="mb-6 text-center text-2xl">
-            <PrismicRichText field={page.data.title} />
+            <PrismicRichText field={page.data.title2} />
           </div>
           <div className="mb-4 flex items-center justify-center">
             <PrismicNextImage

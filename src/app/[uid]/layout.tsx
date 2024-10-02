@@ -7,7 +7,7 @@ export default function PageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div id="root">
+    <div id="root" className="pt-[100px]">
       <Header />
       <main className="container">{children}</main>
       <Footer />
