@@ -10,6 +10,22 @@
     sans-serif;
 }
 
+.container {
+  @apply my-4;
+}
+
+.container li {
+  @apply mb-2 ml-4 text-gray-800;
+}
+
+h1 {
+  @apply mb-[50px] text-3xl font-bold text-broocksprimary;
+}
+
+.container h1 {
+  @apply mb-[50px] text-3xl font-bold text-broocksprimary;
+}
+
 body {
   font-family: var(--font-primary);
 }
@@ -20,6 +36,13 @@ body {
   height: auto; /* Maintain aspect ratio */
 }
 
+p {
+  font-size: 1.2rem;
+}
+
+h2 {
+  @apply my-5 text-[1.6rem];
+}
 /* style de video */
 
 .video-container {
@@ -180,11 +203,11 @@ body {
 }
 
 .cta-button {
-  @apply border-broocksprimary bg-broocksprimary hover:text-broocksprimary z-10 box-border cursor-pointer whitespace-nowrap rounded-full border px-6 py-2 text-sm font-normal text-white shadow-none outline-none transition-colors duration-200 hover:bg-transparent;
+  @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-broocksprimary bg-broocksprimary px-6 py-2 text-sm font-normal text-white shadow-none outline-none transition-colors duration-200 hover:bg-transparent hover:text-broocksprimary;
 }
 
 .cta-button-alt {
-  @apply border-broocksprimary hover:bg-broocksprimary z-10 box-border cursor-pointer whitespace-nowrap rounded-full border bg-white px-6 py-2 text-sm font-normal text-black shadow-none outline-none transition-colors duration-200 hover:text-white;
+  @apply z-10 box-border cursor-pointer whitespace-nowrap rounded-full border border-broocksprimary bg-white px-6 py-2 text-sm font-normal text-black shadow-none outline-none transition-colors duration-200 hover:bg-broocksprimary hover:text-white;
 }
 
 .fixed-width-button {

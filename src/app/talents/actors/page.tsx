@@ -10,11 +10,8 @@ export default async function Page() {
   );
   return (
     <div>
-      <Head>
-        <title>Artist Grid</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className="">
+      <main className="container">
+        <h1>Our actors & actresses</h1>
         <ArtistGrid talents={actorTalents} />
       </main>
     </div>

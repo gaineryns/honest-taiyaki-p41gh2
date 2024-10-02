@@ -6,7 +6,10 @@ import { components } from "@/slices";
 
 const customComponents = {
   hyperlink: ({ children, node }: any) => (
-    <a href={node.data.url} className="text-broocksprimary hover:text-broocksprimary">
+    <a
+      href={node.data.url}
+      className="text-broocksprimary hover:text-broocksprimary"
+    >
       {children}
     </a>
   ),
@@ -17,12 +20,12 @@ export default async function Page() {
   const page = await client.getSingle("package");
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container">
       <PrismicRichText field={page.data.title} />
       <PrismicRichText field={page.data.description} />
-      <h2 className="my-4 font-bold">{page.data.text_package}</h2>
+      <h2 className="my-7 font-bold">{page.data.text_package}</h2>
       <SliceZone slices={page.data.slices} components={components} />
-      <div className="m-4">
+      <div className="mt-9">
         <PrismicRichText
           field={page.data.book_a_call}
           components={customComponents}

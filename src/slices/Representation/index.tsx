@@ -27,7 +27,7 @@ const Representation = ({ slice }: RepresentationProps): JSX.Element => {
 
   return (
     <section
-      className="grid grid-cols-1 gap-16 p-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+      className="grid grid-cols-1 gap-16 p-5 sm:grid-cols-2 md:grid-cols-3"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -39,10 +39,10 @@ const Representation = ({ slice }: RepresentationProps): JSX.Element => {
           }`}
         >
           <PrismicNextImage field={item.image} className="h-auto w-full" />
-          <h2 className="text-md my-2 font-bold text-broocksprimary">
+          <h2 className="my-2 text-[1.1rem] font-bold text-broocksprimary sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem]">
             {item.title}
           </h2>
-          <div className="text-xs">
+          <div className="text-xs leading-[1.3rem]">
             <PrismicRichText field={item.description} />
           </div>
           <p className="mt-auto text-sm">

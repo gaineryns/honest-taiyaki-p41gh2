@@ -7,10 +7,12 @@
   "json": {
     "Main": {
       "title": {
-        "type": "Text",
+        "type": "StructuredText",
         "config": {
           "label": "title",
-          "placeholder": ""
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
         }
       },
       "slices": {

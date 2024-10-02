@@ -11,6 +11,17 @@ type CoachingDocumentDataSlicesSlice = PackageSlice;
  */
 interface CoachingDocumentData {
   /**
+   * title field in *Coaching*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: coaching.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
    * Slice Zone field in *Coaching*
    *
    * - **Field Type**: Slice Zone
@@ -85,6 +96,17 @@ interface ContactInfoDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
+
+  /**
+   * title2 field in *contact_info*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.title2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title2: prismic.RichTextField;
 
   /**
    * Key word field in *contact_info*
@@ -276,13 +298,13 @@ interface FaqDocumentData {
   /**
    * title field in *faq*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: faq.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  title: prismic.KeyTextField;
+  title: prismic.TitleField;
 
   /**
    * Slice Zone field in *faq*
@@ -480,13 +502,13 @@ interface NewsDocumentData {
   /**
    * title field in *News*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: news.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  title: prismic.KeyTextField;
+  title: prismic.TitleField;
 
   /**
    * Slice Zone field in *News*
@@ -541,7 +563,7 @@ interface NewsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type NewsDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<NewsDocumentData>, "news", Lang>;
+  prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
 type PackageDocumentDataSlicesSlice = PackageSlice;
 
@@ -622,6 +644,7 @@ export type PackageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ArticleSlice
   | FaqSlice
   | DiapoSlice
   | AboutSlice
@@ -632,7 +655,7 @@ type PageDocumentDataSlicesSlice =
  */
 interface PageDocumentData {
   /**
-   * Title field in *Page*
+   * title field in *Page*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -1302,6 +1325,61 @@ type ActorSliceVariation = ActorSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ActorSlice = prismic.SharedSlice<"actor", ActorSliceVariation>;
+
+/**
+ * Primary content in *Article → Default → Primary*
+ */
+export interface ArticleSliceDefaultPrimary {
+  /**
+   * Title field in *Article → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * text field in *Article → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Article Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArticleSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Article*
+ */
+type ArticleSliceVariation = ArticleSliceDefault;
+
+/**
+ * Article Shared Slice
+ *
+ * - **API ID**: `article`
+ * - **Description**: Article
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticleSlice = prismic.SharedSlice<
+  "article",
+  ArticleSliceVariation
+>;
 
 /**
  * Primary content in *Contact → Default → Primary*
@@ -2147,6 +2225,10 @@ declare module "@prismicio/client" {
       ActorSliceDefaultPrimary,
       ActorSliceVariation,
       ActorSliceDefault,
+      ArticleSlice,
+      ArticleSliceDefaultPrimary,
+      ArticleSliceVariation,
+      ArticleSliceDefault,
       ContactSlice,
       ContactSliceDefaultPrimary,
       ContactSliceVariation,

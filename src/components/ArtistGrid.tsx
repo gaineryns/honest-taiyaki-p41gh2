@@ -91,7 +91,7 @@ export default function ArtistGrid({ talents }: TalentsProps) {
                   />
                 </motion.div>
               </div>
-              <button className="font-montserrat border-broocksprimary group-hover:bg-broocksprimary focus:bg-broocksprimary mx-auto mt-2 block w-[70%] rounded-full border bg-transparent px-2 py-1 text-center uppercase text-black transition-colors duration-300 focus:text-white group-hover:text-white">
+              <button className="font-montserrat mx-auto mt-2 block w-[70%] rounded-full border border-broocksprimary bg-transparent px-2 py-1 text-center uppercase text-black transition-colors duration-300 focus:bg-broocksprimary focus:text-white group-hover:bg-broocksprimary group-hover:text-white">
                 {talent.data.name}
               </button>
             </Link>

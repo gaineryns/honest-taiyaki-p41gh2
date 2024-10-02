@@ -1,15 +1,15 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-export default function TalentsLayout({
+export default function PageLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div id="root">
+    <div id="root" className="pt-[100px]">
       <Header />
-      <main>{children}</main>
+      <main className="container">{children}</main>
       <Footer />
     </div>
   );
