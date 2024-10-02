@@ -27,7 +27,7 @@ const Representation = ({ slice }: RepresentationProps): JSX.Element => {
 
   return (
     <section
-      className="grid grid-cols-1 gap-16 p-5 sm:grid-cols-2 md:grid-cols-3"
+      className="grid grid-cols-1 gap-16 p-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

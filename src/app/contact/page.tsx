@@ -22,7 +22,7 @@ export default async function Page() {
     <div className="container">
       <PrismicRichText field={page.data.title} />
       <SliceZone slices={page.data.slices} components={components} />
-      <section className="mt-[100px] flex w-full">
+      {/* <section className="mt-[100px] flex w-full">
         <div className="flex w-1/3 items-center justify-center bg-purple-700 p-4 text-white">
           <blockquote className="relative text-center text-xl">
             <BiSolidQuoteAltLeft className="absolute -left-4 -top-2 text-xl" />
@@ -77,8 +77,8 @@ export default async function Page() {
               <FaSun className="h-4 w-4" />
             </div>
           </div>
-        </div>
-      </section>
+        </div> 
+      </section>*/}
     </div>
   );
 }
