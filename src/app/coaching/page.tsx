@@ -23,14 +23,14 @@ export default async function Page() {
     <div className="container">
       <PrismicRichText field={page.data.title} />
       <PrismicRichText field={page.data.description} />
-      {/* <h2 className="my-7 font-bold">{page.data.text_package}</h2> */}
+      <h2 className="my-7 font-bold">{page.data.text_package}</h2>
       <SliceZone slices={page.data.slices} components={components} />
-      {/* <div className="mt-9">
+      <div className="mt-9">
         <PrismicRichText
           field={page.data.book_a_call}
           components={customComponents}
         />
-      </div> */}
+      </div>
     </div>
   );
 }
