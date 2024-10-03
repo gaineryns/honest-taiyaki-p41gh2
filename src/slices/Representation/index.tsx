@@ -39,10 +39,12 @@ const Representation = ({ slice }: RepresentationProps): JSX.Element => {
           }`}
         >
           <PrismicNextImage field={item.image} className="h-auto w-full" />
-          <h2 className="my-2 text-[1.1rem] font-bold text-broocksprimary sm:text-[1.2rem] md:text-[1.3rem] lg:text-[1.4rem]">
+          {/* Réduction de la taille du titre */}
+          <h2 className="my-2 text-[0.7rem] font-bold text-broocksprimary sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1rem]">
             {item.title}
           </h2>
-          <div className="text-xs leading-[1.3rem]">
+          {/* Ajustement des textes de la description */}
+          <div className="text-justify text-sm leading-5 text-gray-700 md:text-base lg:text-lg">
             <PrismicRichText field={item.description} />
           </div>
           <p className="mt-auto text-sm">

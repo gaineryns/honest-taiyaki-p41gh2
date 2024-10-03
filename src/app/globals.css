@@ -26,6 +26,10 @@ h1 {
   @apply mb-[50px] text-3xl font-bold text-broocksprimary;
 }
 
+.container p {
+  @apply text-base leading-relaxed;
+}
+
 body {
   font-family: var(--font-primary);
 }

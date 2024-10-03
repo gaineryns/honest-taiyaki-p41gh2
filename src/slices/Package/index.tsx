@@ -14,21 +14,31 @@ const Package = ({ slice }: PackageProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex items-stretch justify-center space-x-4"
+      className="flex flex-wrap items-stretch justify-center gap-8" // Utilisation de flex-wrap pour éviter le scroll
     >
       {slice.primary.package.map((item, index) => (
         <div
           key={index}
-          className="flex w-80 flex-col rounded-lg bg-gray-100 shadow-md"
+          className="flex h-full w-full flex-col justify-between rounded-lg bg-gray-50 shadow-md sm:w-1/2 md:w-1/3 lg:w-1/4" // Les éléments prennent la largeur disponible selon la taille de l'écran
+          style={{ minHeight: "450px" }} // Hauteur minimale pour chaque bloc
         >
-          <div className="flex-grow p-6">
-            <h2 className="mb-1 text-lg font-bold">{item.category}</h2>
-            <h3 className="mb-3 text-xl">{item.title}</h3>
-            <div className="text-sm">
+          <div className="flex-grow p-6 pr-6">
+            {/* Ajout du padding à droite */}
+            {/* Catégorie en majuscule avec mt-1 et un texte plus grand */}
+            <h2 className="mt-1 text-lg font-bold uppercase text-broocksprimary md:text-xl">
+              {item.category}
+            </h2>
+            {/* Titre sur une seule ligne */}
+            <h3 className="mb-2 truncate text-base font-semibold text-broocksgold md:text-lg lg:text-xl">
+              {item.title}
+            </h3>
+            {/* Description ajustée */}
+            <div className="mb-2 pr-6 text-xs text-gray-700 md:text-sm lg:text-base">
               <PrismicRichText field={item.description} />
             </div>
           </div>
-          <div className="space-y-2 p-6 text-sm">
+          <div className="space-y-1 p-6 pr-6 text-xs text-gray-700 md:text-sm lg:text-base">
+            {/* Réduction de l'espace vertical */}
             <p className="flex items-center">
               <span className="mr-2">⏰</span>
               {item.delivery}
@@ -42,7 +52,7 @@ const Package = ({ slice }: PackageProps): JSX.Element => {
               {item.duration}
             </p>
           </div>
-          <div className="w-full rounded-b-lg bg-broocksprimary p-4 text-center text-2xl font-bold text-white">
+          <div className="w-full rounded-b-lg bg-broocksprimary p-4 text-center text-xl font-bold text-broocksgold md:text-2xl lg:text-3xl">
             £{item.price}
           </div>
         </div>
