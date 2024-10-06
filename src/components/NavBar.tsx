@@ -147,7 +147,7 @@ export default function NavBar({ globalNav }: NavbarProps) {
                       <AnimatePresence>
                         {hoverMenu === slice.id && (
                           <motion.ul
-                            className="submenu absolute left-0 mt-4 w-40 bg-gray-300 text-black shadow-lg"
+                            className="submenu absolute left-0 mt-4 w-40 bg-broocksprimary text-white shadow-lg"
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
@@ -156,10 +156,10 @@ export default function NavBar({ globalNav }: NavbarProps) {
                             {slice.items.map((item, index) => (
                               <li
                                 key={index}
-                                className="submenu-item p-2 transition-colors hover:bg-broocksprimary hover:text-white"
+                                className="submenu-item bg-broocksprimary p-2 transition-colors hover:bg-broocksprimary hover:text-white"
                               >
                                 <PrismicNextLink field={item.child_link}>
-                                  <span className="text-white hover:text-broocksgold">
+                                  <span className="hover:text-broocksgold">
                                     <PrismicText field={item.child_name} />
                                   </span>
                                 </PrismicNextLink>
