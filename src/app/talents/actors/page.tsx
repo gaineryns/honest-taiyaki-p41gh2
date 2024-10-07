@@ -9,7 +9,7 @@ export default async function Page() {
     (talent) => talent.data.category === "Actor",
   );
   return (
-    <div id="__next">
+    <div >
       <main className="container">
         <h1>Our actors & actresses</h1>
         <ArtistGrid talents={actorTalents} />
