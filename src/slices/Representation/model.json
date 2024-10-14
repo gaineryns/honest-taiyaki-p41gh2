@@ -18,19 +18,19 @@
             "label": "representation",
             "repeat": true,
             "fields": {
+              "date": {
+                "type": "Date",
+                "config": {
+                  "label": "date",
+                  "placeholder": ""
+                }
+              },
               "image": {
                 "type": "Image",
                 "config": {
                   "label": "image",
                   "constraint": {},
                   "thumbnails": []
-                }
-              },
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "title",
-                  "placeholder": ""
                 }
               },
               "description": {
@@ -40,23 +40,6 @@
                   "placeholder": "",
                   "allowTargetBlank": true,
                   "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-                }
-              },
-              "talent_name": {
-                "type": "Text",
-                "config": {
-                  "label": "talent name",
-                  "placeholder": ""
-                }
-              },
-              "talent_link": {
-                "type": "Link",
-                "config": {
-                  "label": "talent link",
-                  "select": "document",
-                  "customtypes": [
-                    "talent"
-                  ]
                 }
               }
             }

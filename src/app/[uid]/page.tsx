@@ -45,7 +45,9 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <div className="container">
-      <PrismicRichText field={page.data.title} />
+      <div className="text-center">
+        <PrismicRichText field={page.data.title} />
+      </div>
       <SliceZone slices={page.data.slices} components={components} />
     </div>
   );

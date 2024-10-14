@@ -9,9 +9,9 @@ export default async function Page() {
     (talent) => talent.data.category === "Actor",
   );
   return (
-    <div >
+    <div>
       <main className="container">
-        <h1>Our actors & actresses</h1>
+        <h1 className="text-center">Talents ( Actors & Actresses )</h1>
         <ArtistGrid talents={actorTalents} />
       </main>
     </div>

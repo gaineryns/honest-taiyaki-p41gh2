@@ -6,11 +6,13 @@ import { components } from "@/slices";
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getByUID("news", "news");
+  const page = await client.getSingle("news");
 
   return (
     <div className="container">
-      <PrismicRichText field={page.data.title} />
+      <div className="text-center">
+        <PrismicRichText field={page.data.title} />
+      </div>
       <SliceZone slices={page.data.slices} components={components} />
     </div>
   );
@@ -18,7 +20,7 @@ export default async function Page() {
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
-  const page = await client.getByUID("news", "news");
+  const page = await client.getSingle("news");
 
   return {
     title: page.data.meta_title,

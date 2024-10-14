@@ -1,12 +1,17 @@
-import { Metadata } from "next";
-
-import { PrismicRichText, SliceZone } from "@prismicio/react";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
+import { Metadata } from "next";
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
-import { FaXTwitter, FaInstagram, FaSun } from "react-icons/fa6";
+import {
+  FaXTwitter,
+  FaInstagram,
+  FaSun,
+  FaPinterest,
+  FaLinkedin,
+} from "react-icons/fa6";
+
 import {
   HiOutlineLocationMarker,
   HiOutlinePhone,
@@ -20,11 +25,13 @@ export default async function Page() {
 
   return (
     <div className="container">
-      <PrismicRichText field={page.data.title} />
+      <div className="text-center">
+        <PrismicRichText field={page.data.title} />
+      </div>
       <SliceZone slices={page.data.slices} components={components} />
       <section className="mt-[100px] flex w-full">
         <div className="flex w-1/3 items-center justify-center bg-purple-700 p-4 text-white">
-          <blockquote className="relative text-center text-xl">
+          <blockquote className="relative p-2 text-center text-xl">
             <BiSolidQuoteAltLeft className="absolute -left-4 -top-2 text-xl" />
             <PrismicRichText field={page.data.key_word} />
             <BiSolidQuoteAltRight className="absolute -bottom-2 -right-4 text-xl" />
@@ -42,40 +49,54 @@ export default async function Page() {
             <div className="text-lg leading-tight">
               <div className="mb-2 flex items-center">
                 <HiOutlineLocationMarker className="mr-3 h-5 w-5 text-purple-700" />
-                <span className="font-normal text-gray-800">
+                <a
+                  href={`https://maps.google.com/?q=${page.data.location}`}
+                  target="_blank"
+                  className="font-normal"
+                >
                   {page.data.location}
-                </span>
+                </a>
               </div>
               <div className="mb-2 flex items-center">
                 <HiOutlinePhone className="mr-3 h-5 w-5 text-purple-700" />
-                <span className="font-normal text-gray-800">
+                <a href={`tel:${page.data.phone}`} className="font-normal">
                   {page.data.phone}
-                </span>
+                </a>
               </div>
               <div className="mb-2 flex items-center">
                 <HiOutlineMail className="mr-3 h-5 w-5 text-purple-700" />
-                <span className="font-normal text-gray-800">
+                <a href={`mailto:${page.data.email}`} className="font-normal">
                   {page.data.email}
-                </span>
+                </a>
               </div>
               <div className="mb-2 flex items-center">
                 <HiOutlineClock className="mr-3 h-5 w-5 text-purple-700" />
-                <span className="font-normal text-gray-800">
+                <span className="font-normal">
                   {page.data.open_hour_and_day}
                 </span>
               </div>
             </div>
           </div>
+          {/* Insert the PrismicRichText for nocontact here before the social media icons */}
+          <div className="m-8 text-center">
+            <PrismicRichText field={page.data.nocontact} />
+          </div>
           <div className="mt-4 flex justify-center space-x-4">
-            <div className="flex items-center justify-center rounded-full bg-purple-600 p-2 text-xl text-white">
-              <FaXTwitter className="h-4 w-4" />
-            </div>
-            <div className="flex items-center justify-center rounded-full bg-purple-600 p-2 text-xl text-white">
-              <FaInstagram className="h-4 w-4" />
-            </div>
-            <div className="flex items-center justify-center rounded-full bg-purple-600 p-2 text-xl text-white">
-              <FaSun className="h-4 w-4" />
-            </div>
+            {page.data.instagram && page.data.instagram.link_type && (
+              <PrismicNextLink field={page.data.instagram}>
+                <FaInstagram className="h-8 w-8 text-broocksprimary" />
+              </PrismicNextLink>
+            )}
+            {page.data.pinterest && page.data.pinterest.link_type && (
+              <PrismicNextLink field={page.data.pinterest}>
+                <FaPinterest className="h-8 w-8 text-broocksprimary" />
+              </PrismicNextLink>
+            )}
+            {page.data.linkedin && page.data.linkedin.link_type && (
+              <PrismicNextLink field={page.data.linkedin}>
+                <FaLinkedin className="h-8 w-8 text-broocksprimary" />
+              </PrismicNextLink>
+            )}
           </div>
         </div>
       </section>

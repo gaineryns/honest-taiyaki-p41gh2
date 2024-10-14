@@ -164,39 +164,6 @@ interface ContactInfoDocumentData {
   open_hour_and_day: prismic.KeyTextField;
 
   /**
-   * Twitter field in *contact_info*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_info.twitter
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  twitter: prismic.KeyTextField;
-
-  /**
-   * Spotlight field in *contact_info*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_info.spotlight
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  spotlight: prismic.KeyTextField;
-
-  /**
-   * Instagram field in *contact_info*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact_info.instagram
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  instagram: prismic.KeyTextField;
-
-  /**
    * Image field in *contact_info*
    *
    * - **Field Type**: Image
@@ -206,6 +173,50 @@ interface ContactInfoDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Instagram field in *contact_info*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField;
+
+  /**
+   * Pinterest field in *contact_info*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.pinterest
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  pinterest: prismic.LinkField;
+
+  /**
+   * LinkedIn field in *contact_info*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.linkedin
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkedin: prismic.LinkField;
+
+  /**
+   * noContact field in *contact_info*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_info.nocontact
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  nocontact: prismic.RichTextField;
 
   /**
    * Slice Zone field in *contact_info*
@@ -2188,6 +2199,16 @@ export type Package2Slice = prismic.SharedSlice<
  */
 export interface RepresentationSliceDefaultPrimaryRepresentationItem {
   /**
+   * date field in *Representation → Default → Primary → representation*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: representation.default.primary.representation[].date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date: prismic.DateField;
+
+  /**
    * image field in *Representation → Default → Primary → representation*
    *
    * - **Field Type**: Image
@@ -2198,16 +2219,6 @@ export interface RepresentationSliceDefaultPrimaryRepresentationItem {
   image: prismic.ImageField<never>;
 
   /**
-   * title field in *Representation → Default → Primary → representation*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: representation.default.primary.representation[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
    * description field in *Representation → Default → Primary → representation*
    *
    * - **Field Type**: Rich Text
@@ -2216,26 +2227,6 @@ export interface RepresentationSliceDefaultPrimaryRepresentationItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
-
-  /**
-   * talent name field in *Representation → Default → Primary → representation*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: representation.default.primary.representation[].talent_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  talent_name: prismic.KeyTextField;
-
-  /**
-   * talent link field in *Representation → Default → Primary → representation*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: representation.default.primary.representation[].talent_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  talent_link: prismic.ContentRelationshipField<"talent">;
 }
 
 /**

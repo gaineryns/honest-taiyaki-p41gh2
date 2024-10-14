@@ -68,33 +68,45 @@
           "placeholder": ""
         }
       },
-      "twitter": {
-        "type": "Text",
-        "config": {
-          "label": "Twitter",
-          "placeholder": ""
-        }
-      },
-      "spotlight": {
-        "type": "Text",
-        "config": {
-          "label": "Spotlight",
-          "placeholder": ""
-        }
-      },
-      "instagram": {
-        "type": "Text",
-        "config": {
-          "label": "Instagram",
-          "placeholder": ""
-        }
-      },
       "image": {
         "type": "Image",
         "config": {
           "label": "Image",
           "constraint": {},
           "thumbnails": []
+        }
+      },
+      "instagram": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "pinterest": {
+        "type": "Link",
+        "config": {
+          "label": "Pinterest",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "linkedin": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "nocontact": {
+        "type": "StructuredText",
+        "config": {
+          "label": "noContact",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
       "slices": {

@@ -11,7 +11,7 @@ export default async function Page() {
   return (
     <div>
       <main className="container">
-        <h1>Our dancers</h1>
+        <h1 className="text-center">Talents (Dancers)</h1>
         <ArtistGrid talents={actorTalents} />
       </main>
     </div>

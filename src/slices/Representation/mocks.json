@@ -50,29 +50,11 @@
 								}
 							],
 							[
-								"talent_name",
+								"date",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "prove",
-									"type": "Text"
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "ball",
-									"type": "Text"
-								}
-							],
-							[
-								"talent_link",
-								{
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "DocumentLink",
-										"id": "mock_document_id"
-									}
+									"type": "Date",
+									"value": "2020-03-02"
 								}
 							]
 						]
