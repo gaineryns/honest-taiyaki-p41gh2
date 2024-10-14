@@ -135,6 +135,13 @@
           "select": null
         }
       },
+      "talentsorder": {
+        "type": "Number",
+        "config": {
+          "label": "talentsorder",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

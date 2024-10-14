@@ -565,7 +565,7 @@ interface NewsDocumentData {
 export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
-type PackageDocumentDataSlicesSlice = PackageSlice;
+type PackageDocumentDataSlicesSlice = Package2Slice | PackageSlice;
 
 /**
  * Content for Package documents
@@ -992,6 +992,17 @@ interface TalentDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   imdb_link: prismic.LinkField;
+
+  /**
+   * talentsorder field in *Talent*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.talentsorder
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  talentsorder: prismic.NumberField;
 
   /**
    * Slice Zone field in *Talent*
@@ -2018,6 +2029,161 @@ export type PackageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Package2 → right picture → Primary*
+ */
+export interface Package2SliceRightPicturePrimary {
+  /**
+   * image field in *Package2 → right picture → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.rightPicture.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * category field in *Package2 → right picture → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.rightPicture.primary.category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * title field in *Package2 → right picture → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.rightPicture.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Package2 → right picture → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.rightPicture.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * link field in *Package2 → right picture → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.rightPicture.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * right picture variation for Package2 Slice
+ *
+ * - **API ID**: `rightPicture`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Package2SliceRightPicture = prismic.SharedSliceVariation<
+  "rightPicture",
+  Simplify<Package2SliceRightPicturePrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Package2 → left picture → Primary*
+ */
+export interface Package2SliceLeftRightPrimary {
+  /**
+   * image field in *Package2 → left picture → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.leftRight.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * category field in *Package2 → left picture → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.leftRight.primary.category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * title field in *Package2 → left picture → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.leftRight.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Package2 → left picture → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.leftRight.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * link field in *Package2 → left picture → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: package2.leftRight.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * left picture variation for Package2 Slice
+ *
+ * - **API ID**: `leftRight`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Package2SliceLeftRight = prismic.SharedSliceVariation<
+  "leftRight",
+  Simplify<Package2SliceLeftRightPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Package2*
+ */
+type Package2SliceVariation =
+  | Package2SliceRightPicture
+  | Package2SliceLeftRight;
+
+/**
+ * Package2 Shared Slice
+ *
+ * - **API ID**: `package2`
+ * - **Description**: Package2
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Package2Slice = prismic.SharedSlice<
+  "package2",
+  Package2SliceVariation
+>;
+
+/**
  * Item in *Representation → Default → Primary → representation*
  */
 export interface RepresentationSliceDefaultPrimaryRepresentationItem {
@@ -2261,6 +2427,12 @@ declare module "@prismicio/client" {
       PackageSliceDefaultPrimary,
       PackageSliceVariation,
       PackageSliceDefault,
+      Package2Slice,
+      Package2SliceRightPicturePrimary,
+      Package2SliceLeftRightPrimary,
+      Package2SliceVariation,
+      Package2SliceRightPicture,
+      Package2SliceLeftRight,
       RepresentationSlice,
       RepresentationSliceDefaultPrimaryRepresentationItem,
       RepresentationSliceDefaultPrimary,

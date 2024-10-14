@@ -45,6 +45,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "package2": {
+              "type": "SharedSlice"
+            },
             "package": {
               "type": "SharedSlice"
             }

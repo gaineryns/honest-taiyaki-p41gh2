@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Content } from "@prismicio/client";
 import Image from "next/image";
@@ -21,6 +21,9 @@ export default function ArtistGrid({ talents }: TalentsProps) {
   const [selectedTalent, setSelectedTalent] =
     useState<Content.TalentDocument | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [shuffledTalents, setShuffledTalents] = useState<
+    Content.TalentDocument[]
+  >([]);
 
   useEffect(() => {
     const allCategories = new Set<string>();
@@ -33,6 +36,16 @@ export default function ArtistGrid({ talents }: TalentsProps) {
     setCategories(Array.from(allCategories));
   }, [talents]);
 
+  // Fonction pour mélanger les talents aléatoirement
+  const shuffleTalents = (talentsArray: Content.TalentDocument[]) => {
+    return talentsArray.sort(() => Math.random() - 0.5);
+  };
+
+  useEffect(() => {
+    // Mélanger les talents seulement côté client après le rendu
+    setShuffledTalents(shuffleTalents([...talents]));
+  }, [talents]);
+
   const toggleCategory = (category: string) => {
     setSelectedCategories((prevCategories) =>
       prevCategories.includes(category)
@@ -41,33 +54,52 @@ export default function ArtistGrid({ talents }: TalentsProps) {
     );
   };
 
-  const filteredTalents =
-    selectedCategories.length === 0 ||
-    selectedCategories.length === categories.length
-      ? talents
-      : talents.filter(
-          (talent) =>
-            talent.data.genre &&
-            selectedCategories.includes(talent.data.genre.toLowerCase()),
-        );
+  // Fonction pour ordonner les talents par talentsorder
+  const orderTalents = (talentsArray: Content.TalentDocument[]) => {
+    return talentsArray.sort((a, b) => {
+      const orderA = a.data.talentsorder || 0;
+      const orderB = b.data.talentsorder || 0;
+      return orderA - orderB;
+    });
+  };
+
+  // Utiliser useMemo pour filtrer et ordonner les talents
+  const filteredTalents = useMemo(() => {
+    let result = shuffledTalents;
+
+    if (
+      selectedCategories.length === 0 ||
+      selectedCategories.length === categories.length
+    ) {
+      // Ne pas changer le mélange aléatoire si toutes les catégories sont sélectionnées
+      result = shuffledTalents;
+    } else {
+      // Filtrer selon les catégories sélectionnées
+      result = shuffledTalents.filter(
+        (talent) =>
+          talent.data.genre &&
+          selectedCategories.includes(talent.data.genre.toLowerCase()),
+      );
+    }
+
+    // Ordonner les talents si la variable talentsorder existe
+    return orderTalents(result);
+  }, [selectedCategories, shuffledTalents, categories]);
 
   const openModal = (talent: Content.TalentDocument) => {
     setSelectedTalent(talent);
     setIsModalOpen(true);
-    // Désactiver le scroll de l'arrière-plan
     document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedTalent(null);
-    // Réactiver le scroll de l'arrière-plan
     document.body.style.overflow = "auto";
   };
 
   return (
     <div className="container mx-auto px-4">
-      {/* Boutons de filtre de catégories */}
       <div className="sticky top-0 z-10 bg-white py-4">
         <div className="flex justify-start space-x-4">
           {categories.map((category) => (
@@ -86,7 +118,6 @@ export default function ArtistGrid({ talents }: TalentsProps) {
         </div>
       </div>
 
-      {/* Grille des talents */}
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredTalents.map((talent) => (
           <motion.div
@@ -96,7 +127,7 @@ export default function ArtistGrid({ talents }: TalentsProps) {
             exit={{ opacity: 0, scale: 1 }}
             layout
             className="group relative cursor-pointer"
-            onClick={() => openModal(talent)} // Ouvre la modal au clic
+            onClick={() => openModal(talent)}
           >
             <div className="relative h-[280px] w-full overflow-hidden">
               <motion.div
@@ -123,7 +154,6 @@ export default function ArtistGrid({ talents }: TalentsProps) {
         ))}
       </div>
 
-      {/* Modal pour afficher les détails du talent */}
       {selectedTalent && (
         <Modal
           isOpen={isModalOpen}
@@ -133,7 +163,6 @@ export default function ArtistGrid({ talents }: TalentsProps) {
           overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-[9998]"
         >
           <div className="relative mx-auto w-full max-w-5xl p-6">
-            {/* Remplacer la croix par un bouton stylisé */}
             <button
               onClick={closeModal}
               className="absolute right-4 top-4 flex items-center justify-center rounded-full bg-red-500 p-2 text-white hover:bg-red-600"
