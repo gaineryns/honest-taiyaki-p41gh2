@@ -22,7 +22,11 @@ const formatDate = (dateString: any) => {
 const Representation = ({ slice }: RepresentationProps): JSX.Element => {
   // Sort representation items by date, from most recent to oldest
   const sortedRepresentations = [...slice.primary.representation].sort(
-    (a, b) => Date.parse(b.date) - Date.parse(a.date),
+    (a, b) => {
+      const dateA = a.date ? Date.parse(a.date) : 0;
+      const dateB = b.date ? Date.parse(b.date) : 0;
+      return dateB - dateA;
+    },
   );
 
   return (

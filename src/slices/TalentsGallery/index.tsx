@@ -26,7 +26,7 @@ const TalentsGallery = ({ slice }: TalentsGalleryProps): JSX.Element => {
 
       // Extraire les UIDs des talents liés
       const talentUIDs = slice.primary.talents
-        .map((item) => item.talent?.uid)
+        .map((item) => (item.talent as { uid: string }).uid)
         .filter((uid) => uid !== undefined);
 
       // Requête pour chaque UID afin de récupérer les documents de talents complets
