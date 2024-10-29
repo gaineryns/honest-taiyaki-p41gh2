@@ -1,25 +1,17 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
+
+import { PrismicRichText, SliceZone } from "@prismicio/react";
+import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import TalentDetails from "@/components/TalentDetails";
 
 type Params = { uid: string };
 
-export default async function Page({ params }: { params: Params }) {
-  const client = createClient();
-  const talent = await client
-    .getByUID("talent", params.uid)
-    .catch(() => notFound());
-
-  return (
-    <div className="mx-auto max-w-6xl rounded-lg bg-white text-black shadow-lg">
-      <TalentDetails talent={talent.data} />;
-    </div>
-  );
-}
+/**
+ * This page renders a Prismic Document dynamically based on the URL.
+ */
 
 export async function generateMetadata({
   params,
@@ -27,21 +19,52 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const client = createClient();
-  const talent = await client
-    .getByUID("talent", params.uid)
+  const page = await client
+    .getByUID("talents_gallery", params.uid)
     .catch(() => notFound());
 
   return {
-    title: talent.data.meta_title,
-    description: talent.data.meta_description,
+    title: page.data.title,
+    description: page.data.meta_description,
+    openGraph: {
+      title: page.data.meta_title || undefined,
+      images: [
+        {
+          url: page.data.meta_image.url || "",
+        },
+      ],
+    },
   };
+}
+
+export default async function Page({ params }: { params: Params }) {
+  const client = createClient();
+  const page = await client
+    .getByUID("talents_gallery", params.uid)
+    .catch(() => notFound());
+
+  return (
+    <div className="container">
+      <h1 className="text-center">{page.data.title}</h1>
+      <SliceZone slices={page.data.slices} components={components} />
+    </div>
+  );
 }
 
 export async function generateStaticParams() {
   const client = createClient();
-  const talent = await client.getAllByType("talent");
 
-  return talent.map((talent) => {
-    return { uid: talent.uid };
+  /**
+   * Query all Documents from the API, except the homepage.
+   */
+  const pages = await client.getAllByType("talents_gallery", {
+    predicates: [prismic.filter.not("my.page.uid", "dancers")],
+  });
+
+  /**
+   * Define a path for every Document.
+   */
+  return pages.map((page) => {
+    return { uid: page.uid };
   });
 }

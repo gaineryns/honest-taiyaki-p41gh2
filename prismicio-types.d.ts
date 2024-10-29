@@ -861,6 +861,32 @@ interface TalentDocumentData {
   description: prismic.RichTextField;
 
   /**
+   * genre field in *Talent*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Unknown
+   * - **API ID Path**: talent.genre
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  genre: prismic.SelectField<
+    "Unknown" | "Male" | "Female" | "Transgender" | "Non Binary",
+    "filled"
+  >;
+
+  /**
+   * spotlight link field in *Talent*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.spotlight_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  spotlight_link: prismic.LinkField;
+
+  /**
    * vimeo link field in *Talent*
    *
    * - **Field Type**: Embed
@@ -881,6 +907,17 @@ interface TalentDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   comp_card: prismic.LinkToMediaField;
+
+  /**
+   * category field in *Talent*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talent.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"Actor" | "Dancer">;
 
   /**
    * CV file field in *Talent*
@@ -927,17 +964,6 @@ interface TalentDocumentData {
   color_hair: prismic.KeyTextField;
 
   /**
-   * genre field in *Talent*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: talent.genre
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  genre: prismic.SelectField<"Male" | "Female" | "Non Binary">;
-
-  /**
    * enable field in *Talent*
    *
    * - **Field Type**: Boolean
@@ -970,28 +996,6 @@ interface TalentDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   playing_age_max: prismic.NumberField;
-
-  /**
-   * category field in *Talent*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: talent.category
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  category: prismic.SelectField<"Actor" | "Dancer">;
-
-  /**
-   * spotlight link field in *Talent*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: talent.spotlight_link
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  spotlight_link: prismic.LinkField;
 
   /**
    * IMDB link field in *Talent*
@@ -1070,6 +1074,82 @@ interface TalentDocumentData {
 export type TalentDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<TalentDocumentData>, "talent", Lang>;
 
+type TalentsGalleryDocumentDataSlicesSlice = TalentsGallerySlice;
+
+/**
+ * Content for Talents Gallery documents
+ */
+interface TalentsGalleryDocumentData {
+  /**
+   * Title field in *Talents Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Talents Gallery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TalentsGalleryDocumentDataSlicesSlice> /**
+   * Meta Title field in *Talents Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: talents_gallery.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Talents Gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: talents_gallery.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Talents Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Talents Gallery document from Prismic
+ *
+ * - **API ID**: `talents_gallery`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TalentsGalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TalentsGalleryDocumentData>,
+    "talents_gallery",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | CoachingDocument
   | ContactInfoDocument
@@ -1081,7 +1161,8 @@ export type AllDocumentTypes =
   | PackageDocument
   | PageDocument
   | SettingsDocument
-  | TalentDocument;
+  | TalentDocument
+  | TalentsGalleryDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -1347,6 +1428,171 @@ type ActorSliceVariation = ActorSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ActorSlice = prismic.SharedSlice<"actor", ActorSliceVariation>;
+
+/**
+ * Item in *Actorordering → Talents → Primary → Talents*
+ */
+export interface ActororderingSliceTalentsWomenPrimaryTalentsItem {
+  /**
+   * Talent field in *Actorordering → Talents → Primary → Talents*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsWomen.primary.talents[].talent
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  talent: prismic.LinkField;
+}
+
+/**
+ * Item in *Actorordering → Talents Men → Primary → Talents*
+ */
+export interface ActororderingSliceTalentsMenPrimaryTalentsItem {
+  /**
+   * Talent field in *Actorordering → Talents Men → Primary → Talents*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsMen.primary.talents[].talent
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  talent: prismic.LinkField;
+}
+
+/**
+ * Item in *Actorordering → Talents Non Binary → Primary → Talents*
+ */
+export interface ActororderingSliceTalentsNonBinaryPrimaryTalentsItem {
+  /**
+   * Talent field in *Actorordering → Talents Non Binary → Primary → Talents*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsNonBinary.primary.talents[].talent
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  talent: prismic.LinkField;
+}
+
+/**
+ * Primary content in *Actorordering → Talents → Primary*
+ */
+export interface ActororderingSliceTalentsWomenPrimary {
+  /**
+   * Title field in *Actorordering → Talents → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsWomen.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Talents field in *Actorordering → Talents → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsWomen.primary.talents[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  talents: prismic.GroupField<
+    Simplify<ActororderingSliceTalentsWomenPrimaryTalentsItem>
+  >;
+}
+
+/**
+ * Talents variation for Actorordering Slice
+ *
+ * - **API ID**: `talentsWomen`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActororderingSliceTalentsWomen = prismic.SharedSliceVariation<
+  "talentsWomen",
+  Simplify<ActororderingSliceTalentsWomenPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Actorordering → Talents Men → Primary*
+ */
+export interface ActororderingSliceTalentsMenPrimary {
+  /**
+   * Talents field in *Actorordering → Talents Men → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsMen.primary.talents[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  talents: prismic.GroupField<
+    Simplify<ActororderingSliceTalentsMenPrimaryTalentsItem>
+  >;
+}
+
+/**
+ * Talents Men variation for Actorordering Slice
+ *
+ * - **API ID**: `talentsMen`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActororderingSliceTalentsMen = prismic.SharedSliceVariation<
+  "talentsMen",
+  Simplify<ActororderingSliceTalentsMenPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *Actorordering → Talents Non Binary → Primary*
+ */
+export interface ActororderingSliceTalentsNonBinaryPrimary {
+  /**
+   * Talents field in *Actorordering → Talents Non Binary → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: actorordering.talentsNonBinary.primary.talents[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  talents: prismic.GroupField<
+    Simplify<ActororderingSliceTalentsNonBinaryPrimaryTalentsItem>
+  >;
+}
+
+/**
+ * Talents Non Binary variation for Actorordering Slice
+ *
+ * - **API ID**: `talentsNonBinary`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActororderingSliceTalentsNonBinary = prismic.SharedSliceVariation<
+  "talentsNonBinary",
+  Simplify<ActororderingSliceTalentsNonBinaryPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Actorordering*
+ */
+type ActororderingSliceVariation =
+  | ActororderingSliceTalentsWomen
+  | ActororderingSliceTalentsMen
+  | ActororderingSliceTalentsNonBinary;
+
+/**
+ * Actorordering Shared Slice
+ *
+ * - **API ID**: `actorordering`
+ * - **Description**: Actorordering
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActororderingSlice = prismic.SharedSlice<
+  "actorordering",
+  ActororderingSliceVariation
+>;
 
 /**
  * Primary content in *Article → Default → Primary*
@@ -2277,6 +2523,115 @@ export type RepresentationSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TalentsGallery → Default → Primary → Talents*
+ */
+export interface TalentsGallerySliceDefaultPrimaryTalentsItem {
+  /**
+   * Talent field in *TalentsGallery → Default → Primary → Talents*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.default.primary.talents[].talent
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  talent: prismic.ContentRelationshipField<"talent">;
+}
+
+/**
+ * Item in *TalentsGallery → list → Primary → Talents*
+ */
+export interface TalentsGallerySliceListPrimaryTalentsItem {
+  /**
+   * Talent field in *TalentsGallery → list → Primary → Talents*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.list.primary.talents[].talent
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  talent: prismic.ContentRelationshipField<"talent">;
+}
+
+/**
+ * Primary content in *TalentsGallery → Default → Primary*
+ */
+export interface TalentsGallerySliceDefaultPrimary {
+  /**
+   * Talents field in *TalentsGallery → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.default.primary.talents[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  talents: prismic.GroupField<
+    Simplify<TalentsGallerySliceDefaultPrimaryTalentsItem>
+  >;
+}
+
+/**
+ * Default variation for TalentsGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TalentsGallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TalentsGallerySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *TalentsGallery → list → Primary*
+ */
+export interface TalentsGallerySliceListPrimary {
+  /**
+   * Talents field in *TalentsGallery → list → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: talents_gallery.list.primary.talents[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  talents: prismic.GroupField<
+    Simplify<TalentsGallerySliceListPrimaryTalentsItem>
+  >;
+}
+
+/**
+ * list variation for TalentsGallery Slice
+ *
+ * - **API ID**: `list`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TalentsGallerySliceList = prismic.SharedSliceVariation<
+  "list",
+  Simplify<TalentsGallerySliceListPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TalentsGallery*
+ */
+type TalentsGallerySliceVariation =
+  | TalentsGallerySliceDefault
+  | TalentsGallerySliceList;
+
+/**
+ * TalentsGallery Shared Slice
+ *
+ * - **API ID**: `talents_gallery`
+ * - **Description**: TalentsGallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TalentsGallerySlice = prismic.SharedSlice<
+  "talents_gallery",
+  TalentsGallerySliceVariation
+>;
+
+/**
  * Primary content in *VideoHomePage → Default → Primary*
  */
 export interface VideoHomePageSliceDefaultPrimary {
@@ -2373,6 +2728,9 @@ declare module "@prismicio/client" {
       TalentDocument,
       TalentDocumentData,
       TalentDocumentDataSlicesSlice,
+      TalentsGalleryDocument,
+      TalentsGalleryDocumentData,
+      TalentsGalleryDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,
@@ -2382,6 +2740,17 @@ declare module "@prismicio/client" {
       ActorSliceDefaultPrimary,
       ActorSliceVariation,
       ActorSliceDefault,
+      ActororderingSlice,
+      ActororderingSliceTalentsWomenPrimaryTalentsItem,
+      ActororderingSliceTalentsWomenPrimary,
+      ActororderingSliceTalentsMenPrimaryTalentsItem,
+      ActororderingSliceTalentsMenPrimary,
+      ActororderingSliceTalentsNonBinaryPrimaryTalentsItem,
+      ActororderingSliceTalentsNonBinaryPrimary,
+      ActororderingSliceVariation,
+      ActororderingSliceTalentsWomen,
+      ActororderingSliceTalentsMen,
+      ActororderingSliceTalentsNonBinary,
       ArticleSlice,
       ArticleSliceDefaultPrimary,
       ArticleSliceVariation,
@@ -2429,6 +2798,14 @@ declare module "@prismicio/client" {
       RepresentationSliceDefaultPrimary,
       RepresentationSliceVariation,
       RepresentationSliceDefault,
+      TalentsGallerySlice,
+      TalentsGallerySliceDefaultPrimaryTalentsItem,
+      TalentsGallerySliceDefaultPrimary,
+      TalentsGallerySliceListPrimaryTalentsItem,
+      TalentsGallerySliceListPrimary,
+      TalentsGallerySliceVariation,
+      TalentsGallerySliceDefault,
+      TalentsGallerySliceList,
       VideoHomePageSlice,
       VideoHomePageSliceDefaultPrimary,
       VideoHomePageSliceVariation,

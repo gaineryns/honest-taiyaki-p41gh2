@@ -1,0 +1,102 @@
+{
+  "id": "actorordering",
+  "type": "SharedSlice",
+  "name": "Actorordering",
+  "description": "Actorordering",
+  "variations": [
+    {
+      "id": "talentsWomen",
+      "name": "Talents",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "talents": {
+          "type": "Group",
+          "config": {
+            "label": "Talents",
+            "repeat": true,
+            "fields": {
+              "talent": {
+                "type": "Link",
+                "config": {
+                  "label": "Talent",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "talentsMen",
+      "name": "Talents Men",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "talents": {
+          "type": "Group",
+          "config": {
+            "label": "Talents",
+            "repeat": false,
+            "fields": {
+              "talent": {
+                "type": "Link",
+                "config": {
+                  "label": "Talent",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "talentsNonBinary",
+      "name": "Talents Non Binary",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "talents": {
+          "type": "Group",
+          "config": {
+            "label": "Talents",
+            "repeat": false,
+            "fields": {
+              "talent": {
+                "type": "Link",
+                "config": {
+                  "label": "Talent",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

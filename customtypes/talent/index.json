@@ -36,6 +36,23 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
+      "genre": {
+        "type": "Select",
+        "config": {
+          "label": "genre",
+          "placeholder": "",
+          "options": ["Unknown", "Male", "Female", "Transgender", "Non Binary"],
+          "default_value": "Unknown"
+        }
+      },
+      "spotlight_link": {
+        "type": "Link",
+        "config": {
+          "label": "spotlight link",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "vimeo_link": {
         "type": "Embed",
         "config": {
@@ -49,6 +66,14 @@
           "label": "Comp card",
           "placeholder": "",
           "select": "media"
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "category",
+          "placeholder": "",
+          "options": ["Actor", "Dancer"]
         }
       },
       "cv_file": {
@@ -80,14 +105,6 @@
           "placeholder": ""
         }
       },
-      "genre": {
-        "type": "Select",
-        "config": {
-          "label": "genre",
-          "placeholder": "",
-          "options": ["Male", "Female", "Non Binary"]
-        }
-      },
       "enable": {
         "type": "Boolean",
         "config": {
@@ -109,22 +126,6 @@
         "config": {
           "label": "playing age max",
           "placeholder": ""
-        }
-      },
-      "category": {
-        "type": "Select",
-        "config": {
-          "label": "category",
-          "placeholder": "",
-          "options": ["Actor", "Dancer"]
-        }
-      },
-      "spotlight_link": {
-        "type": "Link",
-        "config": {
-          "label": "spotlight link",
-          "placeholder": "",
-          "select": null
         }
       },
       "imdb_link": {

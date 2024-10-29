@@ -20,16 +20,21 @@ const formatDate = (dateString: any) => {
  * Component for "Representation" Slices.
  */
 const Representation = ({ slice }: RepresentationProps): JSX.Element => {
+  // Sort representation items by date, from most recent to oldest
+  const sortedRepresentations = [...slice.primary.representation].sort(
+    (a, b) => Date.parse(b.date) - Date.parse(a.date),
+  );
+
   return (
     <section
       className="grid grid-cols-1 gap-16 p-5 md:grid-cols-3"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      {slice.primary.representation.map((item, index) => (
+      {sortedRepresentations.map((item, index) => (
         <div key={index} className="mb-10 flex flex-col items-start text-left">
-          <h2 className="my-2 text-[0.7rem] font-bold text-broocksprimary sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1rem]">
-            {formatDate(item.date)} {/* Apply formatted date */}
+          <h2 className="my-2 text-[1.0rem] font-extrabold text-broocksprimary sm:text-[1.2rem] md:text-[1.4rem] lg:text-[1.6rem]">
+            {formatDate(item.date)} {/* Date with larger font */}
           </h2>
           <div className="w-full">
             <PrismicNextImage

@@ -1,0 +1,68 @@
+{
+  "id": "talents_gallery",
+  "type": "SharedSlice",
+  "name": "TalentsGallery",
+  "description": "TalentsGallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "talents": {
+          "type": "Group",
+          "config": {
+            "label": "Talents",
+            "repeat": true,
+            "fields": {
+              "talent": {
+                "type": "Link",
+                "config": {
+                  "label": "Talent",
+                  "select": "document",
+                  "customtypes": [
+                    "talent"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "list",
+      "name": "list",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "talents": {
+          "type": "Group",
+          "config": {
+            "label": "Talents",
+            "repeat": true,
+            "fields": {
+              "talent": {
+                "type": "Link",
+                "config": {
+                  "label": "Talent",
+                  "select": "document",
+                  "customtypes": [
+                    "talent"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
