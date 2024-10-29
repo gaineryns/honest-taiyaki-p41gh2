@@ -39,9 +39,15 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
-  const page = await client
-    .getByUID("talents_gallery", params.uid)
-    .catch(() => notFound());
+
+  // Fetch the document with revalidation every 60 seconds
+  const page = await client.getByUID("talents_gallery", params.uid, {
+    fetchOptions: { next: { revalidate: 5 } }, // Revalidate every 60 seconds
+  });
+
+  if (!page) {
+    notFound();
+  }
 
   return (
     <div className="container">
@@ -51,19 +57,18 @@ export default async function Page({ params }: { params: Params }) {
   );
 }
 
+/**
+ * Generate static parameters for each document.
+ */
 export async function generateStaticParams() {
   const client = createClient();
 
-  /**
-   * Query all Documents from the API, except the homepage.
-   */
+  // Query all Documents from the API, except the homepage
   const pages = await client.getAllByType("talents_gallery", {
     predicates: [prismic.filter.not("my.page.uid", "dancers")],
   });
 
-  /**
-   * Define a path for every Document.
-   */
+  // Define a path for every Document
   return pages.map((page) => {
     return { uid: page.uid };
   });
