@@ -6,7 +6,9 @@ import { components } from "@/slices";
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getSingle("news");
+  const page = await client.getSingle("news", {
+    fetchOptions: { next: { revalidate: 60 } },
+  });
 
   return (
     <div className="container">

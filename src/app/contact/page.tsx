@@ -21,7 +21,9 @@ import {
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getSingle("contact_info");
+  const page = await client.getSingle("contact_info", {
+    fetchOptions: { next: { revalidate: 60 } },
+  });
 
   return (
     <div className="container">

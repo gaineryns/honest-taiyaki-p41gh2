@@ -52,7 +52,9 @@ const descriptionComponents = {
 
 export default async function Page() {
   const client = createClient();
-  const page = await client.getSingle("package");
+  const page = await client.getSingle("package", {
+    fetchOptions: { next: { revalidate: 60 } },
+  });
 
   return (
     <div className="container">
