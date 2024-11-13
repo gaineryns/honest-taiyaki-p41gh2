@@ -12,7 +12,7 @@ export type AboutProps = SliceComponentProps<Content.AboutSlice>;
  */
 const About = ({ slice }: AboutProps): JSX.Element => {
   return (
-    <div className="w-full bg-white py-8">
+    <div className="w-full py-8">
       <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
@@ -20,11 +20,13 @@ const About = ({ slice }: AboutProps): JSX.Element => {
       >
         <div className="flex flex-col items-start md:flex-row md:items-start">
           <div>
-            {/* Fixing the image size explicitly */}
-            <PrismicNextImage
-              field={slice.primary.image}
-              className="w-full max-w-[400px] rounded-lg"
-            />
+            {/* Image centrée */}
+            <div className="flex justify-center">
+              <PrismicNextImage
+                field={slice.primary.image}
+                className="w-full max-w-[400px] rounded-lg"
+              />
+            </div>
             <div className="mt-4 text-left">
               <PrismicRichText
                 field={slice.primary.person}

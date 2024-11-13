@@ -4,7 +4,9 @@ import Link from "next/link";
 
 export default async function Footer() {
   const client = createClient();
-  const settings = await client.getSingle("contact_info");
+  const settings = await client.getSingle("contact_info", {
+    fetchOptions: { next: { revalidate: 60 } },
+  });
   const currentYear = new Date().getFullYear();
 
   // Styles d'icônes avec couleur broocksgold

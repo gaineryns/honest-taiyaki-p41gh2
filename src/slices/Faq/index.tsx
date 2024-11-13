@@ -34,7 +34,7 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
   };
 
   return (
-    <section className="bg-white p-8">
+    <section className="p-8">
       <h2 className="mb-4 text-3xl font-bold">{slice.primary.title}</h2>
       <ul className="m-0 list-none p-0">
         {slice.primary.faq.map((item, index) => (

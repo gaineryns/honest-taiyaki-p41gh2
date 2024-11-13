@@ -20,7 +20,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const client = createClient();
   const page = await client
-    .getByUID("page", params.uid)
+    .getByUID("page", params.uid, {
+      fetchOptions: { next: { revalidate: 60 } },
+    })
     .catch(() => notFound());
 
   return {
@@ -40,7 +42,9 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
   const page = await client
-    .getByUID("page", params.uid)
+    .getByUID("page", params.uid, {
+      fetchOptions: { next: { revalidate: 60 } },
+    })
     .catch(() => notFound());
 
   return (

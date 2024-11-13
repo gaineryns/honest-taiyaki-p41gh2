@@ -4,7 +4,9 @@ import NavBarLocation from "@/components/NavBarLocation";
 
 export default async function Header() {
   const client = createClient();
-  const globalNav = await client.getByUID("navigation", "global-nav");
+  const globalNav = await client.getByUID("navigation", "global-nav", {
+    fetchOptions: { next: { revalidate: 60 } },
+  });
 
   return (
     <header>
