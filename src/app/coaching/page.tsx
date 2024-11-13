@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { PrismicRichText, SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import Script from "next/script";
 
 const customComponents = {
   hyperlink: ({ children, node }: any) => (
@@ -50,6 +51,15 @@ const descriptionComponents = {
   // Continue with other elements as needed, ensuring they all include centering styles
 };
 
+function AcuitySchedulingScript() {
+  return (
+    <Script
+      src="https://embed.acuityscheduling.com/js/embed.js"
+      strategy="lazyOnload"
+    ></Script>
+  );
+}
+
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("package", {
@@ -61,14 +71,16 @@ export default async function Page() {
       <div className="text-center">
         <PrismicRichText field={page.data.title} />
       </div>
-      <PrismicRichText
+      {/* <PrismicRichText
         field={page.data.description}
         components={descriptionComponents}
       />
       <h2 className="my-7 text-center font-bold text-broocksprimary">
         {page.data.text_package}
-      </h2>
+      </h2> */}
+
       <SliceZone slices={page.data.slices} components={components} />
+      <AcuitySchedulingScript />
       <div className="mt-9 text-center">
         <PrismicRichText
           field={page.data.book_a_call}

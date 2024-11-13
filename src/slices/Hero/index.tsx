@@ -19,26 +19,37 @@ import {
  */
 const Hero = ({ slice }: any): JSX.Element => {
   return (
-    <Bounded
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      <div className="relative">
+    <section className="w-full bg-white" id={slice.primary.anchor || undefined}>
+      <Bounded className="pb-16 pt-20 text-center lg:pt-32">
+        <div className="relative">
+          <StarGrid />
+          {isFilled.richText(slice.primary.heading) && (
+            <h1 className="font-display text-slate-900 mx-auto max-w-4xl text-5xl font-medium tracking-tight sm:text-7xl">
+              <PrismicText field={slice.primary.heading} />
+            </h1>
+          )}
+          <div className="text-slate-700 mx-auto mt-6 max-w-2xl text-lg tracking-tight">
+            <PrismicRichText field={slice.primary.body} />
+          </div>
+          <div className="mt-10 flex justify-center gap-x-6">
+            <ButtonLink
+              field={slice.primary.button_link}
+              className="hover:bg-broocksprimary-dark mt-auto rounded-md bg-broocksprimary px-4 py-2 text-white transition-colors duration-300"
+            >
+              {slice.primary.button_label}
+            </ButtonLink>
+          </div>
+          <div className="mt-6 text-center">
+            <>{slice.primary.footer}</>
+          </div>
+          <PrismicNextImage
+            field={slice.primary.image}
+            className="mx-auto mt-10"
+          />
+        </div>
         <StarGrid />
-        {isFilled.richText(slice.primary.heading) && (
-          <h1 className="ext-balance text-5x1 md:text-7x1 t text-center font-medium">
-            <PrismicText field={slice.primary.heading} />
-          </h1>
-        )}
-        <PrismicRichText field={slice.primary.body} />
-        <ButtonLink field={slice.primary.button_link}>
-          {slice.primary.button_label}
-        </ButtonLink>
-        <PrismicNextImage field={slice.primary.image} />
-      </div>
-
-      <StarGrid />
-    </Bounded>
+      </Bounded>
+    </section>
   );
 };
 

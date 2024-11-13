@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type CoachingDocumentDataSlicesSlice = PackageSlice;
+type CoachingDocumentDataSlicesSlice = HeroSlice | PackageSlice;
 
 /**
  * Content for Coaching documents
@@ -576,7 +576,7 @@ interface NewsDocumentData {
 export type NewsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<NewsDocumentData>, "news", Lang>;
 
-type PackageDocumentDataSlicesSlice = Package2Slice | PackageSlice;
+type PackageDocumentDataSlicesSlice = HeroSlice | Package2Slice | PackageSlice;
 
 /**
  * Content for Package documents
@@ -1993,14 +1993,14 @@ export interface HeroSliceDefaultPrimary {
   button_label: prismic.KeyTextField;
 
   /**
-   * image field in *Hero → Default → Primary*
+   * Footer field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: hero.default.primary.footer
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  image: prismic.ImageField<never>;
+  footer: prismic.KeyTextField;
 }
 
 /**

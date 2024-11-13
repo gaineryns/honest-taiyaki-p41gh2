@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import Script from "next/script";
 
 /**
  * Props for `Package`.
@@ -55,6 +56,16 @@ const Package = ({ slice }: PackageProps): JSX.Element => {
           <div className="w-full rounded-b-lg bg-broocksprimary p-4 text-center text-xl font-bold text-broocksgold md:text-2xl lg:text-3xl">
             £{item.price}
           </div>
+          <iframe
+            title={`Booking calendar for ${item.title}`}
+            src="https://app.acuityscheduling.com/schedule.php?owner=33940838&appointmentType=70786204"
+            width="100%"
+            height="800"
+          />
+          <Script
+            src="https://embed.acuityscheduling.com/js/embed.js"
+            strategy="lazyOnload"
+          />
         </div>
       ))}
     </section>

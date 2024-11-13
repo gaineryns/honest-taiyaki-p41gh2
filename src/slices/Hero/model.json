@@ -45,12 +45,11 @@
             "placeholder": ""
           }
         },
-        "image": {
-          "type": "Image",
+        "footer": {
+          "type": "Text",
           "config": {
-            "label": "image",
-            "constraint": {},
-            "thumbnails": []
+            "label": "Footer",
+            "placeholder": ""
           }
         }
       },

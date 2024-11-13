@@ -1,6 +1,10 @@
+"use client";
+
 import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { useState, useEffect } from "react";
+import { asLink } from "@prismicio/helpers";
 
 /**
  * Props for `Package2`.
@@ -12,6 +16,23 @@ export type Package2Props = SliceComponentProps<Content.Package2Slice>;
  */
 const Package2 = ({ slice }: Package2Props): JSX.Element => {
   const isRightPicture = slice.variation === "rightPicture";
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const bookingUrl = slice.primary.link
+    ? asLink(slice.primary.link) ?? undefined
+    : undefined;
+
+  // Gérer le scroll du body
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isSidebarOpen]);
 
   return (
     <section
@@ -51,12 +72,41 @@ const Package2 = ({ slice }: Package2Props): JSX.Element => {
               }}
             />
           </div>
-          <PrismicNextLink
-            field={slice.primary.link}
+          <button
+            onClick={() => setIsSidebarOpen(true)}
             className="hover:bg-broocksprimary-dark mt-auto rounded-md bg-broocksprimary px-4 py-2 text-white transition-colors duration-300"
           >
             REQUEST MORE INFO
-          </PrismicNextLink>
+          </button>
+
+          {/* Sidebar */}
+          <div
+            className={`fixed right-0 top-0 z-50 h-full w-full bg-white shadow-lg transition-transform duration-300 md:w-[600px] ${
+              isSidebarOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="relative h-full overflow-y-auto">
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="absolute right-4 top-4 z-10 text-2xl hover:text-gray-600"
+              >
+                ×
+              </button>
+              <iframe
+                title={`Booking calendar for ${slice.primary.title}`}
+                src={bookingUrl}
+                className="h-full w-full overflow-y-auto"
+              />
+            </div>
+          </div>
+
+          {/* Overlay pour tous les écrans */}
+          {isSidebarOpen && (
+            <div
+              className="fixed inset-0 z-40 bg-black bg-opacity-50"
+              onClick={() => setIsSidebarOpen(false)}
+            />
+          )}
         </div>
       </div>
     </section>
