@@ -47,13 +47,13 @@ export default function ArtistGrid({ talents }: TalentsProps) {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="sticky top-0 z-10 bg-white py-4">
-        <div className="flex justify-start space-x-4">
+      <div className="sticky top-0 z-10 py-4">
+        <div className="flex flex-wrap justify-start gap-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => toggleCategory(category)}
-              className={`rounded-full border px-4 py-2 text-sm uppercase ${
+              className={`rounded-full border px-3 py-1.5 text-xs uppercase sm:px-4 sm:py-2 sm:text-sm ${
                 selectedCategory === category
                   ? "border-broocksprimary bg-broocksprimary text-white"
                   : "border-broocksprimary bg-transparent text-black"

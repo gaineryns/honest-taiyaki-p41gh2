@@ -17,8 +17,14 @@ export type HomepageProps = SliceComponentProps<Content.HomepageSlice>;
 const Homepage = ({ slice }: HomepageProps): JSX.Element => {
   const [logoVisible, setLogoVisible] = useState(true);
 
-  const videoUrl = slice.primary.video.link_type === "Media" ? (slice.primary.video as any).url : "";
-  const logoUrl = slice.primary.logo.link_type === "Media" ? (slice.primary.logo as any).url : "";
+  const videoUrl =
+    slice.primary.video.link_type === "Media"
+      ? (slice.primary.video as any).url
+      : "";
+  const logoUrl =
+    slice.primary.logo.link_type === "Media"
+      ? (slice.primary.logo as any).url
+      : "";
 
   const handleVideoClick = () => {
     setLogoVisible(false);
@@ -30,7 +36,11 @@ const Homepage = ({ slice }: HomepageProps): JSX.Element => {
   useEffect(() => {
     const videoElement = document.querySelector("video") as HTMLVideoElement;
     if (videoElement) {
-      videoElement.play();
+      videoElement.playsInline = true;
+      videoElement.setAttribute("playsinline", "");
+      videoElement.play().catch((error) => {
+        console.log("Lecture automatique impossible:", error);
+      });
       videoElement.addEventListener("click", handleVideoClick);
     }
 
@@ -45,21 +55,22 @@ const Homepage = ({ slice }: HomepageProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="video-section"
+      className="relative h-screen w-full overflow-hidden"
     >
       {videoUrl && (
         <video
           src={videoUrl}
           autoPlay
+          playsInline
           muted
           loop
-          className="fullscreen-video"
+          className="absolute left-0 top-0 h-full w-full object-cover"
         />
       )}
       <AnimatePresence>
         {logoVisible && logoUrl && (
           <motion.div
-            className="logo-overlay"
+            className="absolute inset-0 flex items-center justify-center bg-black/30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -69,9 +80,9 @@ const Homepage = ({ slice }: HomepageProps): JSX.Element => {
             <Image
               src={logoUrl}
               alt="Logo"
-              width={200}
-              height={200}
-              className="logo"
+              width={500}
+              height={500}
+              className="h-auto w-48 sm:w-64 md:w-96 lg:w-[30rem]"
             />
           </motion.div>
         )}

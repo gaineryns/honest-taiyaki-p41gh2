@@ -23,25 +23,26 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex w-full"
+      className="flex w-full flex-col-reverse md:flex-row"
     >
-      <div className="flex w-1/3 items-center justify-center bg-purple-700 p-4 text-white">
-        <blockquote className="relative text-center text-xl">
-          <BiSolidQuoteAltLeft className="absolute -left-4 -top-2 text-xl" />
+      <div className="hidden w-full items-center justify-center bg-purple-700 p-4 text-white md:flex md:w-1/3">
+        <blockquote className="relative text-center text-lg md:text-xl">
+          <BiSolidQuoteAltLeft className="absolute -left-4 -top-2 text-lg md:text-xl" />
           <PrismicRichText field={slice.primary.key_word} />
-          <BiSolidQuoteAltRight className="absolute -bottom-2 -right-4 text-xl" />
+          bhjbjhnbbjhbhjbhjbjhbbbh
+          <BiSolidQuoteAltRight className="absolute -bottom-2 -right-4 text-lg md:text-xl" />
         </blockquote>
       </div>
-      <div className="flex w-2/3 flex-col items-center justify-center bg-white p-8">
-        <div className="mb-6 text-center text-2xl">
+      <div className="flex w-full flex-col items-center justify-center bg-white p-4 md:w-2/3 md:p-8">
+        <div className="mb-6 text-center text-xl md:text-2xl">
           <PrismicRichText field={slice.primary.title} />
         </div>
-        <div className="mb-4 flex items-center justify-center">
+        <div className="mb-4 flex flex-col items-center justify-center md:flex-row">
           <PrismicNextImage
             field={slice.primary.image}
-            className="mr-6 h-36 w-36 rounded-full border-4 border-purple-700"
+            className="mb-4 hidden h-28 w-28 rounded-full border-4 border-purple-700 md:mb-0 md:mr-6 md:block md:h-36 md:w-36"
           />
-          <div className="text-lg leading-tight">
+          <div className="text-base leading-tight md:text-lg">
             <div className="mb-2 flex items-center">
               <HiOutlineLocationMarker className="mr-3 h-5 w-5 text-purple-700" />
               <span className="font-normal text-gray-800">

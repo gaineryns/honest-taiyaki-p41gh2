@@ -26,29 +26,29 @@ export default async function Page() {
   });
 
   return (
-    <div className="container">
+    <div className="container mx-auto px-4">
       <div className="text-center">
         <PrismicRichText field={page.data.title} />
       </div>
       <SliceZone slices={page.data.slices} components={components} />
-      <section className="mt-[100px] flex w-full">
-        <div className="flex w-1/3 items-center justify-center bg-purple-700 p-4 text-white">
-          <blockquote className="relative p-2 text-center text-xl">
+      <section className="mt-[100px] flex w-full flex-col md:flex-row">
+        <div className="flex min-h-full w-full items-center justify-center bg-purple-700 p-4 text-white md:w-1/3">
+          <blockquote className="relative mx-auto max-w-[80%] p-2 text-center text-lg md:text-xl">
             <BiSolidQuoteAltLeft className="absolute -left-4 -top-2 text-xl" />
             <PrismicRichText field={page.data.key_word} />
             <BiSolidQuoteAltRight className="absolute -bottom-2 -right-4 text-xl" />
           </blockquote>
         </div>
-        <div className="flex w-2/3 flex-col items-center justify-center bg-gray-300 p-8">
-          <div className="mb-6 text-center text-2xl">
+        <div className="flex w-full flex-col items-center justify-center bg-gray-300 p-4 md:w-2/3 md:p-8">
+          <div className="mb-6 text-center text-xl md:text-2xl">
             <PrismicRichText field={page.data.title2} />
           </div>
-          <div className="mb-4 flex items-center justify-center">
+          <div className="mb-4 flex flex-col items-center justify-center md:flex-row">
             <PrismicNextImage
               field={page.data.image}
-              className="mr-6 h-36 w-36 rounded-full border-4 border-purple-700"
+              className="mb-4 h-28 w-28 rounded-full border-4 border-purple-700 md:mb-0 md:mr-6 md:h-36 md:w-36"
             />
-            <div className="text-lg leading-tight">
+            <div className="text-base leading-tight md:text-lg">
               <div className="mb-2 flex items-center">
                 <HiOutlineLocationMarker className="mr-3 h-5 w-5 text-purple-700" />
                 <a
@@ -79,8 +79,7 @@ export default async function Page() {
               </div>
             </div>
           </div>
-          {/* Insert the PrismicRichText for nocontact here before the social media icons */}
-          <div className="m-8 text-center">
+          <div className="m-4 text-center md:m-8">
             <PrismicRichText field={page.data.nocontact} />
           </div>
           <div className="mt-4 flex justify-center space-x-4">
