@@ -4,6 +4,7 @@ import "./navbar.css";
 import { Montserrat, Lato } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -25,7 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={` ${montserrat.className} ${lato.className}`}>
       <body>
-        <main>{children}</main>
+        <main>
+          {children}
+          <Analytics />
+        </main>
       </body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>

@@ -19,6 +19,7 @@
     "@prismicio/helpers": "^2.3.9",
     "@prismicio/next": "^1.6.0",
     "@prismicio/react": "^2.8.0",
+    "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.13",
     "next": "^14.2.4",
