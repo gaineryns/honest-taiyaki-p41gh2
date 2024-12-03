@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-
+import { Analytics } from "@vercel/analytics/next";
 export default function PageLayout({
   children,
 }: {
@@ -9,7 +9,10 @@ export default function PageLayout({
   return (
     <div id="root" className="bg-gray-50 pt-[100px]">
       <Header />
-      <main className="container">{children}</main>
+      <main className="container">
+        {children}
+        <Analytics />
+      </main>
       <Footer />
     </div>
   );
