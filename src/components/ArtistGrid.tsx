@@ -13,6 +13,7 @@ type TalentsProps = {
 export default function ArtistGrid({ talents }: TalentsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [categories, setCategories] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Extract unique categories from the list of talents
   useMemo(() => {
@@ -34,20 +35,34 @@ export default function ArtistGrid({ talents }: TalentsProps) {
 
   // Filter talents by selected category
   const filteredTalents = useMemo(() => {
-    if (!selectedCategory || selectedCategory === "all") {
-      return talents;
-    } else {
-      return talents.filter(
-        (talent) =>
-          talent.data.genre &&
-          talent.data.genre.toLowerCase() === selectedCategory,
-      );
-    }
-  }, [selectedCategory, talents]);
+    return talents.filter((talent) => {
+      const matchesCategory =
+        !selectedCategory ||
+        selectedCategory === "all" ||
+        (talent.data.genre &&
+          talent.data.genre.toLowerCase() === selectedCategory);
+
+      const matchesSearch =
+        talent.data.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        talent.data.genre?.toLowerCase().includes(searchQuery.toLowerCase());
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, talents, searchQuery]);
 
   return (
     <div className="container mx-auto px-4">
-      <div className="sticky top-0 z-10 py-4">
+      <div className="sticky top-0 z-10 bg-gray-50 py-4">
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Rechercher un talent..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full rounded-full border border-broocksprimary px-4 py-2 focus:outline-none focus:ring-2 focus:ring-broocksprimary"
+          />
+        </div>
+
         <div className="flex flex-wrap justify-start gap-2">
           {categories.map((category) => (
             <button
