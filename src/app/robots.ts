@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/", "/private/"],
     },
-    sitemap: "https://votredomaine.com/sitemap.xml", // Remplacez par votre domaine
+    sitemap: "https://broocksagency.com/sitemap.xml", // Remplacez par votre domaine
   };
 }
